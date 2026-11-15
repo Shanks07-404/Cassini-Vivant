@@ -1,0 +1,62 @@
+{
+  "dense_reference_survey": {
+    "parameters": {
+      "l_xy": {
+        "val": 2500.0,
+        "ci": [
+          -16906.7,
+          21906.7
+        ]
+      },
+      "l_h": {
+        "val": 15.4,
+        "ci": [
+          12.4,
+          18.4
+        ]
+      },
+      "sigma_f": {
+        "val": 0.93,
+        "ci": [
+          0.806,
+          1.053
+        ]
+      },
+      "sigma_n": {
+        "val": 0.05,
+        "ci": [
+          -2.281,
+          2.381
+        ]
+      }
+    },
+    "performance": {
+      "calibration": "Dense Reference Survey (One-Time Campaign)",
+      "rmse": 1.019,
+      "cov90": 70.3,
+      "all_rec05": 13.3,
+      "all_rec02": 18.3,
+      "pocket_rec05": 16.1,
+      "pocket_rec02": 21.0
+    },
+    "survey_implication": "Requires a one-time high-density mobile sensor campaign across the appellation."
+  },
+  "station_only_calibration": {
+    "parameters": {
+      "l_xy": 527.2,
+      "l_h": 148.9,
+      "sigma_f": 0.585,
+      "sigma_n": 0.101
+    },
+    "performance": {
+      "calibration": "6-Station Farm Network Only",
+      "rmse": 0.975,
+      "cov90": 71.2,
+      "all_rec05": 13.1,
+      "all_rec02": 18.5,
+      "pocket_rec05": 15.2,
+      "pocket_rec02": 21.6
+    },
+    "survey_implication": "Zero survey cost; calibrated solely on the 6 farm weather stations."
+  }
+}
