@@ -1,0 +1,3940 @@
+{
+  "metadata": {
+    "title": "Cassini Vivant Authoritative Evaluation Results (Phase 4f)",
+    "generated_at": "2026-11-08T11:46:18.390311+00:00",
+    "git_commit_hash": "fcd9492cc1bb9bf118c6ab0370c2cdc7c0cce451",
+    "phase": "4f",
+    "default_pipeline": "farm_only_calibration_b",
+    "canonical_action_threshold": "p* = C/L = 0.0778",
+    "fixed_cost_parameters": {
+      "cost_per_parcel_night": 350.0,
+      "loss_per_parcel": 4500.0,
+      "break_even_ratio": 12.86,
+      "optimal_action_threshold_p_star": 0.0778
+    },
+    "provenance": {
+      "farm_only_b_default": {
+        "origin": "Empirical semivariogram fit from 6 farm weather stations (S01-S06) via LOOCV on training nights 002-060. Hyperparameters fitted from sensor data only. No survey cost.",
+        "hyperparameters": {
+          "l_xy": 527.2,
+          "l_h": 148.9,
+          "sigma_f": 0.585,
+          "sigma_n": 0.101,
+          "sigma_scale": 1.855
+        },
+        "role": "Default operational pipeline (\u20ac0 survey cost)."
+      },
+      "dense_survey_a_sensitivity": {
+        "origin": "Empirical semivariogram fit from dense historical mobile sensor network across training nights 002-060. Labeled 'calibrated on a dense historical reference network' in docs.",
+        "hyperparameters": {
+          "l_xy": 2500.0,
+          "l_h": 15.4,
+          "sigma_f": 0.93,
+          "sigma_n": 0.05,
+          "sigma_scale": 1.855
+        },
+        "role": "Sensitivity upper bound representing a one-time dense mobile campaign."
+      },
+      "oracle_generator_matched_sensitivity": {
+        "origin": "Matched to simulator generator parameters in sim/microclimate.py (750m spatial length scale, 40m pool height, 0.30\u00b0C sensor noise).",
+        "hyperparameters": {
+          "l_xy": 750.0,
+          "l_h": 40.0,
+          "sigma_f": 0.85,
+          "sigma_n": 0.3,
+          "sigma_scale": 1.855
+        },
+        "role": "Theoretical upper-bound sensitivity; NOT an empirical fit."
+      }
+    },
+    "survey_claim_conditional_statement": "Dense survey (a) catches 24 additional frozen parcels across 59 nights (\u20ac108,000 saved crop loss), but triggers 151 additional false-alarm protections (\u20ac52,850 extra protection outlay), yielding a net seasonal saving of \u20ac46,750.00 (\u20ac792.37/night). Whether this justifies conducting a mobile reference survey depends on verified campaign costs [needs_verification]."
+  },
+  "catalog_verification": {
+    "training_inversion_frozen_parcel_nights": 1170,
+    "training_ordinary_frozen_parcel_nights": 673,
+    "training_total_frozen_parcel_nights": 1843,
+    "hero_frozen_parcels": 49,
+    "grand_total_frozen_parcel_nights": 1892
+  },
+  "night_types_catalog": {
+    "catalog_note": "Property of the synthetic 60-night catalog, not real climatological frequencies. Catalog contains 1 hero night (night_001) plus 59 training nights (002-060).",
+    "total_nights": 60,
+    "total_frozen_parcel_nights": 1892,
+    "ordinary_frost": {
+      "count": 3,
+      "share_of_nights": 0.05,
+      "frozen_parcel_nights": 673,
+      "share_of_frozen_parcel_nights": 0.356,
+      "nights": [
+        "night_058",
+        "night_059",
+        "night_060"
+      ]
+    },
+    "inversion_frost": {
+      "count": 38,
+      "share_of_nights": 0.633,
+      "frozen_parcel_nights": 1219,
+      "share_of_frozen_parcel_nights": 0.644,
+      "nights": [
+        "night_001",
+        "night_021",
+        "night_022",
+        "night_023",
+        "night_024",
+        "night_025",
+        "night_026",
+        "night_027",
+        "night_028",
+        "night_029",
+        "night_030",
+        "night_031",
+        "night_032",
+        "night_033",
+        "night_034",
+        "night_035",
+        "night_036",
+        "night_037",
+        "night_038",
+        "night_039",
+        "night_040",
+        "night_041",
+        "night_042",
+        "night_043",
+        "night_044",
+        "night_045",
+        "night_046",
+        "night_047",
+        "night_048",
+        "night_049",
+        "night_050",
+        "night_051",
+        "night_052",
+        "night_053",
+        "night_054",
+        "night_055",
+        "night_056",
+        "night_057"
+      ]
+    },
+    "no_frost": {
+      "count": 19,
+      "share_of_nights": 0.317,
+      "frozen_parcel_nights": 0,
+      "share_of_frozen_parcel_nights": 0.0,
+      "nights": [
+        "night_002",
+        "night_003",
+        "night_004",
+        "night_005",
+        "night_006",
+        "night_007",
+        "night_008",
+        "night_009",
+        "night_010",
+        "night_011",
+        "night_012",
+        "night_013",
+        "night_014",
+        "night_015",
+        "night_016",
+        "night_017",
+        "night_018",
+        "night_019",
+        "night_020"
+      ]
+    }
+  },
+  "sequential_k6_to_k12_trajectory": [
+    {
+      "k": 6,
+      "sensor_added": {
+        "id": "Baseline (S01-S06)",
+        "rel_elev_m": null,
+        "is_pocket": null
+      },
+      "sigma_bar_c": 1.01,
+      "sigma_max_c": 1.521,
+      "hero_night": {
+        "all_frozen": {
+          "n": 49,
+          "rec_05": 0.0,
+          "rec_02": 0.1224,
+          "rec_p_star": 0.551,
+          "TP": 27,
+          "FN": 22,
+          "FP": 22,
+          "TN": 168,
+          "protected": 49
+        },
+        "pocket": {
+          "n": 21,
+          "rec_05": 0.0,
+          "rec_02": 0.1905,
+          "rec_p_star": 0.7143
+        },
+        "hollow": {
+          "n": 28,
+          "rec_05": 0.0,
+          "rec_02": 0.0714,
+          "rec_p_star": 0.4286
+        }
+      },
+      "training_nights": {
+        "integer_counts": {
+          "TP": 1539,
+          "FN": 304,
+          "FP": 1163,
+          "TN": 11095,
+          "protected": 2702,
+          "frozen": 1843,
+          "pocket_TP": 462,
+          "pocket_FN": 163,
+          "hollow_TP": 1077,
+          "hollow_FN": 141
+        },
+        "pooled_recall_pstar": 0.8351,
+        "macro_recall_pstar": 0.5616,
+        "macro_rec_05": 0.1315,
+        "macro_rec_02": 0.2965,
+        "pocket_pooled_recall": 0.7392,
+        "pocket_macro_recall": 0.6061,
+        "hollow_pooled_recall": 0.8842,
+        "hollow_macro_recall": 0.6233
+      },
+      "training_nights_averages": {
+        "all_frost_nights": {
+          "rec_05": 0.1315,
+          "rec_02": 0.2965,
+          "rec_p_star": 0.8351,
+          "macro_rec_p_star": 0.5616,
+          "n_nights": 40
+        },
+        "pocket_parcels": {
+          "rec_p_star": 0.7392,
+          "n_nights": 40
+        },
+        "hollow_parcels": {
+          "rec_p_star": 0.8842,
+          "n_nights": 40
+        },
+        "inversion_nights": {
+          "n_nights": 37
+        },
+        "ordinary_frost_nights": {
+          "n_nights": 3
+        }
+      }
+    },
+    {
+      "k": 7,
+      "sensor_added": {
+        "id": "P050",
+        "rel_elev_m": 0.66,
+        "is_pocket": true
+      },
+      "sigma_bar_c": 0.914,
+      "sigma_max_c": 1.336,
+      "hero_night": {
+        "all_frozen": {
+          "n": 49,
+          "rec_05": 0.2245,
+          "rec_02": 0.5102,
+          "rec_p_star": 0.6735,
+          "TP": 33,
+          "FN": 16,
+          "FP": 40,
+          "TN": 150,
+          "protected": 73
+        },
+        "pocket": {
+          "n": 21,
+          "rec_05": 0.3333,
+          "rec_02": 0.7143,
+          "rec_p_star": 0.8095
+        },
+        "hollow": {
+          "n": 28,
+          "rec_05": 0.1429,
+          "rec_02": 0.3571,
+          "rec_p_star": 0.5714
+        }
+      },
+      "training_nights": {
+        "integer_counts": {
+          "TP": 1642,
+          "FN": 201,
+          "FP": 1507,
+          "TN": 10751,
+          "protected": 3149,
+          "frozen": 1843,
+          "pocket_TP": 523,
+          "pocket_FN": 102,
+          "hollow_TP": 1119,
+          "hollow_FN": 99
+        },
+        "pooled_recall_pstar": 0.8909,
+        "macro_recall_pstar": 0.6619,
+        "macro_rec_05": 0.2698,
+        "macro_rec_02": 0.4922,
+        "pocket_pooled_recall": 0.8368,
+        "pocket_macro_recall": 0.6994,
+        "hollow_pooled_recall": 0.9187,
+        "hollow_macro_recall": 0.801
+      },
+      "training_nights_averages": {
+        "all_frost_nights": {
+          "rec_05": 0.2698,
+          "rec_02": 0.4922,
+          "rec_p_star": 0.8909,
+          "macro_rec_p_star": 0.6619,
+          "n_nights": 40
+        },
+        "pocket_parcels": {
+          "rec_p_star": 0.8368,
+          "n_nights": 40
+        },
+        "hollow_parcels": {
+          "rec_p_star": 0.9187,
+          "n_nights": 40
+        },
+        "inversion_nights": {
+          "n_nights": 37
+        },
+        "ordinary_frost_nights": {
+          "n_nights": 3
+        }
+      }
+    },
+    {
+      "k": 8,
+      "sensor_added": {
+        "id": "P202",
+        "rel_elev_m": 2.56,
+        "is_pocket": true
+      },
+      "sigma_bar_c": 0.86,
+      "sigma_max_c": 1.298,
+      "hero_night": {
+        "all_frozen": {
+          "n": 49,
+          "rec_05": 0.449,
+          "rec_02": 0.6735,
+          "rec_p_star": 0.7143,
+          "TP": 35,
+          "FN": 14,
+          "FP": 50,
+          "TN": 140,
+          "protected": 85
+        },
+        "pocket": {
+          "n": 21,
+          "rec_05": 0.6667,
+          "rec_02": 0.8095,
+          "rec_p_star": 0.8571
+        },
+        "hollow": {
+          "n": 28,
+          "rec_05": 0.2857,
+          "rec_02": 0.5714,
+          "rec_p_star": 0.6071
+        }
+      },
+      "training_nights": {
+        "integer_counts": {
+          "TP": 1655,
+          "FN": 188,
+          "FP": 1552,
+          "TN": 10706,
+          "protected": 3207,
+          "frozen": 1843,
+          "pocket_TP": 527,
+          "pocket_FN": 98,
+          "hollow_TP": 1128,
+          "hollow_FN": 90
+        },
+        "pooled_recall_pstar": 0.898,
+        "macro_recall_pstar": 0.6623,
+        "macro_rec_05": 0.3535,
+        "macro_rec_02": 0.5277,
+        "pocket_pooled_recall": 0.8432,
+        "pocket_macro_recall": 0.6985,
+        "hollow_pooled_recall": 0.9261,
+        "hollow_macro_recall": 0.7884
+      },
+      "training_nights_averages": {
+        "all_frost_nights": {
+          "rec_05": 0.3535,
+          "rec_02": 0.5277,
+          "rec_p_star": 0.898,
+          "macro_rec_p_star": 0.6623,
+          "n_nights": 40
+        },
+        "pocket_parcels": {
+          "rec_p_star": 0.8432,
+          "n_nights": 40
+        },
+        "hollow_parcels": {
+          "rec_p_star": 0.9261,
+          "n_nights": 40
+        },
+        "inversion_nights": {
+          "n_nights": 37
+        },
+        "ordinary_frost_nights": {
+          "n_nights": 3
+        }
+      }
+    },
+    {
+      "k": 9,
+      "sensor_added": {
+        "id": "P073",
+        "rel_elev_m": 18.1,
+        "is_pocket": false
+      },
+      "sigma_bar_c": 0.83,
+      "sigma_max_c": 1.298,
+      "hero_night": {
+        "all_frozen": {
+          "n": 49,
+          "rec_05": 0.4082,
+          "rec_02": 0.5918,
+          "rec_p_star": 0.6327,
+          "TP": 31,
+          "FN": 18,
+          "FP": 39,
+          "TN": 151,
+          "protected": 70
+        },
+        "pocket": {
+          "n": 21,
+          "rec_05": 0.5714,
+          "rec_02": 0.7619,
+          "rec_p_star": 0.8095
+        },
+        "hollow": {
+          "n": 28,
+          "rec_05": 0.2857,
+          "rec_02": 0.4643,
+          "rec_p_star": 0.5
+        }
+      },
+      "training_nights": {
+        "integer_counts": {
+          "TP": 1604,
+          "FN": 239,
+          "FP": 1247,
+          "TN": 11011,
+          "protected": 2851,
+          "frozen": 1843,
+          "pocket_TP": 511,
+          "pocket_FN": 114,
+          "hollow_TP": 1093,
+          "hollow_FN": 125
+        },
+        "pooled_recall_pstar": 0.8703,
+        "macro_recall_pstar": 0.6172,
+        "macro_rec_05": 0.3334,
+        "macro_rec_02": 0.4739,
+        "pocket_pooled_recall": 0.8176,
+        "pocket_macro_recall": 0.6683,
+        "hollow_pooled_recall": 0.8974,
+        "hollow_macro_recall": 0.7322
+      },
+      "training_nights_averages": {
+        "all_frost_nights": {
+          "rec_05": 0.3334,
+          "rec_02": 0.4739,
+          "rec_p_star": 0.8703,
+          "macro_rec_p_star": 0.6172,
+          "n_nights": 40
+        },
+        "pocket_parcels": {
+          "rec_p_star": 0.8176,
+          "n_nights": 40
+        },
+        "hollow_parcels": {
+          "rec_p_star": 0.8974,
+          "n_nights": 40
+        },
+        "inversion_nights": {
+          "n_nights": 37
+        },
+        "ordinary_frost_nights": {
+          "n_nights": 3
+        }
+      }
+    },
+    {
+      "k": 10,
+      "sensor_added": {
+        "id": "P021",
+        "rel_elev_m": 0.62,
+        "is_pocket": true
+      },
+      "sigma_bar_c": 0.811,
+      "sigma_max_c": 1.298,
+      "hero_night": {
+        "all_frozen": {
+          "n": 49,
+          "rec_05": 0.4286,
+          "rec_02": 0.5714,
+          "rec_p_star": 0.6122,
+          "TP": 30,
+          "FN": 19,
+          "FP": 43,
+          "TN": 147,
+          "protected": 73
+        },
+        "pocket": {
+          "n": 21,
+          "rec_05": 0.5238,
+          "rec_02": 0.6667,
+          "rec_p_star": 0.7619
+        },
+        "hollow": {
+          "n": 28,
+          "rec_05": 0.3571,
+          "rec_02": 0.5,
+          "rec_p_star": 0.5
+        }
+      },
+      "training_nights": {
+        "integer_counts": {
+          "TP": 1615,
+          "FN": 228,
+          "FP": 1314,
+          "TN": 10944,
+          "protected": 2929,
+          "frozen": 1843,
+          "pocket_TP": 511,
+          "pocket_FN": 114,
+          "hollow_TP": 1104,
+          "hollow_FN": 114
+        },
+        "pooled_recall_pstar": 0.8763,
+        "macro_recall_pstar": 0.6331,
+        "macro_rec_05": 0.3792,
+        "macro_rec_02": 0.5009,
+        "pocket_pooled_recall": 0.8176,
+        "pocket_macro_recall": 0.6775,
+        "hollow_pooled_recall": 0.9064,
+        "hollow_macro_recall": 0.7476
+      },
+      "training_nights_averages": {
+        "all_frost_nights": {
+          "rec_05": 0.3792,
+          "rec_02": 0.5009,
+          "rec_p_star": 0.8763,
+          "macro_rec_p_star": 0.6331,
+          "n_nights": 40
+        },
+        "pocket_parcels": {
+          "rec_p_star": 0.8176,
+          "n_nights": 40
+        },
+        "hollow_parcels": {
+          "rec_p_star": 0.9064,
+          "n_nights": 40
+        },
+        "inversion_nights": {
+          "n_nights": 37
+        },
+        "ordinary_frost_nights": {
+          "n_nights": 3
+        }
+      }
+    },
+    {
+      "k": 11,
+      "sensor_added": {
+        "id": "P214",
+        "rel_elev_m": 8.8,
+        "is_pocket": false
+      },
+      "sigma_bar_c": 0.79,
+      "sigma_max_c": 1.298,
+      "hero_night": {
+        "all_frozen": {
+          "n": 49,
+          "rec_05": 0.449,
+          "rec_02": 0.5306,
+          "rec_p_star": 0.6122,
+          "TP": 30,
+          "FN": 19,
+          "FP": 45,
+          "TN": 145,
+          "protected": 75
+        },
+        "pocket": {
+          "n": 21,
+          "rec_05": 0.4762,
+          "rec_02": 0.619,
+          "rec_p_star": 0.7619
+        },
+        "hollow": {
+          "n": 28,
+          "rec_05": 0.4286,
+          "rec_02": 0.4643,
+          "rec_p_star": 0.5
+        }
+      },
+      "training_nights": {
+        "integer_counts": {
+          "TP": 1629,
+          "FN": 214,
+          "FP": 1411,
+          "TN": 10847,
+          "protected": 3040,
+          "frozen": 1843,
+          "pocket_TP": 507,
+          "pocket_FN": 118,
+          "hollow_TP": 1122,
+          "hollow_FN": 96
+        },
+        "pooled_recall_pstar": 0.8839,
+        "macro_recall_pstar": 0.6395,
+        "macro_rec_05": 0.41,
+        "macro_rec_02": 0.5146,
+        "pocket_pooled_recall": 0.8112,
+        "pocket_macro_recall": 0.6699,
+        "hollow_pooled_recall": 0.9212,
+        "hollow_macro_recall": 0.81
+      },
+      "training_nights_averages": {
+        "all_frost_nights": {
+          "rec_05": 0.41,
+          "rec_02": 0.5146,
+          "rec_p_star": 0.8839,
+          "macro_rec_p_star": 0.6395,
+          "n_nights": 40
+        },
+        "pocket_parcels": {
+          "rec_p_star": 0.8112,
+          "n_nights": 40
+        },
+        "hollow_parcels": {
+          "rec_p_star": 0.9212,
+          "n_nights": 40
+        },
+        "inversion_nights": {
+          "n_nights": 37
+        },
+        "ordinary_frost_nights": {
+          "n_nights": 3
+        }
+      }
+    },
+    {
+      "k": 12,
+      "sensor_added": {
+        "id": "P201",
+        "rel_elev_m": 92.12,
+        "is_pocket": false
+      },
+      "sigma_bar_c": 0.75,
+      "sigma_max_c": 1.261,
+      "hero_night": {
+        "all_frozen": {
+          "n": 49,
+          "rec_05": 0.449,
+          "rec_02": 0.5306,
+          "rec_p_star": 0.6327,
+          "TP": 31,
+          "FN": 18,
+          "FP": 36,
+          "TN": 154,
+          "protected": 67
+        },
+        "pocket": {
+          "n": 21,
+          "rec_05": 0.5238,
+          "rec_02": 0.619,
+          "rec_p_star": 0.8095
+        },
+        "hollow": {
+          "n": 28,
+          "rec_05": 0.3929,
+          "rec_02": 0.4643,
+          "rec_p_star": 0.5
+        }
+      },
+      "training_nights": {
+        "integer_counts": {
+          "TP": 1609,
+          "FN": 234,
+          "FP": 1144,
+          "TN": 11114,
+          "protected": 2753,
+          "frozen": 1843,
+          "pocket_TP": 511,
+          "pocket_FN": 114,
+          "hollow_TP": 1098,
+          "hollow_FN": 120
+        },
+        "pooled_recall_pstar": 0.873,
+        "macro_recall_pstar": 0.6314,
+        "macro_rec_05": 0.4066,
+        "macro_rec_02": 0.522,
+        "pocket_pooled_recall": 0.8176,
+        "pocket_macro_recall": 0.6744,
+        "hollow_pooled_recall": 0.9015,
+        "hollow_macro_recall": 0.7834
+      },
+      "training_nights_averages": {
+        "all_frost_nights": {
+          "rec_05": 0.4066,
+          "rec_02": 0.522,
+          "rec_p_star": 0.873,
+          "macro_rec_p_star": 0.6314,
+          "n_nights": 40
+        },
+        "pocket_parcels": {
+          "rec_p_star": 0.8176,
+          "n_nights": 40
+        },
+        "hollow_parcels": {
+          "rec_p_star": 0.9015,
+          "n_nights": 40
+        },
+        "inversion_nights": {
+          "n_nights": 37
+        },
+        "ordinary_frost_nights": {
+          "n_nights": 3
+        }
+      }
+    }
+  ],
+  "sequential_diff_notes": {
+    "explanation_of_4c_k6_0_percent_recall": "In Phases 3b and 4b, the hero diagnostic reported recall at threshold p > 0.5 (which was 0.0%, because with 6 ridge/mid-slope stations the posterior mean was above 0\u00b0C and uncalibrated sigma was small, so P(T < 0) never exceeded 0.50). In contrast, the ROI card operated at action threshold p* = C/L = 0.0778, where the tail of the distribution was large enough to catch 14/49 parcels. In Phase 4c, double inflation (1.855^2 \u2248 3.44) raised p* recall, but for K > 6 added stations were queried via sensor_readings.get(s.id, regional_temp) which defaulted to +2.4\u00b0C (warm regional), falsely warming the valley and causing recall to collapse to 0.224. In Phase 4f, all added stations are queried from true parcel temperatures, and a single calibrated scale s = 1.855 is applied everywhere. At K=6, pooled recall is 55.1% at p*, 12.2% at p>0.2, and 0.0% at p>0.5.",
+    "reconciliation_macro_vs_pooled_recall": "K=8 training-night recall reconciliation: Macro-average (unweighted mean of night-by-night recalls across the 40 frost nights) is 66.2%, because mild nights with only 1 or 2 frozen parcels pull down the unweighted average when 1 parcel is missed. In contrast, pooled micro-recall is 1,655 / 1,843 = 89.80%. Similarly for K=6, macro-average is 56.2%, while pooled micro-recall is 1,539 / 1,843 = 83.51% (matching the 45.8 protected and 5.2 damaged parcels per night)."
+  },
+  "calibrations_side_by_side": {
+    "farm_b_default": {
+      "name": "Farm Calibration (b) \u2014 Default (\u20ac0 survey)",
+      "overall_rmse": 0.975,
+      "coverage_90_pct": 84.1,
+      "integer_counts": {
+        "TP": 1539,
+        "FN": 304,
+        "FP": 1163,
+        "TN": 11095,
+        "protected": 2702,
+        "frozen": 1843
+      },
+      "financial_breakdown_eur": {
+        "protection_cost": 945700.0,
+        "crop_loss": 1368000.0,
+        "total_expenditure": 2313700.0,
+        "mean_per_night": 39215.25
+      },
+      "recall": {
+        "pooled_p_star": 0.8351,
+        "macro_p_star": 0.5616,
+        "rec_05": 0.1315,
+        "rec_02": 0.2965
+      }
+    },
+    "dense_a_sensitivity": {
+      "name": "Dense Reference Survey (a) \u2014 Sensitivity",
+      "overall_rmse": 1.019,
+      "coverage_90_pct": 83.4,
+      "integer_counts": {
+        "TP": 1563,
+        "FN": 280,
+        "FP": 1314,
+        "TN": 10944,
+        "protected": 2877,
+        "frozen": 1843
+      },
+      "financial_breakdown_eur": {
+        "protection_cost": 1006950.0,
+        "crop_loss": 1260000.0,
+        "total_expenditure": 2266950.0,
+        "mean_per_night": 38422.88
+      },
+      "recall": {
+        "pooled_p_star": 0.8481,
+        "macro_p_star": 0.6143,
+        "rec_05": 0.1327,
+        "rec_02": 0.3521
+      }
+    },
+    "oracle_sensitivity": {
+      "name": "Oracle Generator-Matched \u2014 Sensitivity",
+      "overall_rmse": 0.975,
+      "coverage_90_pct": 92.6,
+      "integer_counts": {
+        "TP": 1715,
+        "FN": 128,
+        "FP": 2554,
+        "TN": 9704,
+        "protected": 4269,
+        "frozen": 1843
+      },
+      "financial_breakdown_eur": {
+        "protection_cost": 1494150.0,
+        "crop_loss": 576000.0,
+        "total_expenditure": 2070150.0,
+        "mean_per_night": 35087.29
+      },
+      "recall": {
+        "pooled_p_star": 0.9305,
+        "macro_p_star": 0.7802,
+        "rec_05": 0.1308,
+        "rec_02": 0.4164
+      }
+    },
+    "survey_value_conclusion": {
+      "dense_minus_farm_damage_saved_parcels": 24,
+      "dense_minus_farm_loss_saved_eur": 108000.0,
+      "dense_extra_false_alarms": 151,
+      "dense_extra_protection_cost_eur": 52850.0,
+      "net_seasonal_saving_eur": 46750.0,
+      "net_saving_per_night_eur": 792.37,
+      "survey_cost_note": "[needs_verification: mobile calibration survey costs depend on instrumentation, vehicle deployment, and surveyor hours]",
+      "conditional_statement": "Dense survey (a) catches 24 additional frozen parcels across 59 nights (\u20ac108,000 saved crop loss), but triggers 151 additional false-alarm protections (\u20ac52,850 extra protection outlay), yielding a net seasonal saving of \u20ac46,750.00 (\u20ac792.37/night). Whether this justifies conducting a mobile reference survey depends on verified campaign costs [needs_verification]."
+    }
+  },
+  "reliability_and_isotonic_recalibration": {
+    "reliability_diagram_fine_bins": [
+      {
+        "bin": "[0.00, 0.02)",
+        "n": 9570,
+        "predicted_mean": 0.0023,
+        "observed_fraction": 0.0122,
+        "error": 0.0099
+      },
+      {
+        "bin": "[0.02, 0.04)",
+        "n": 974,
+        "predicted_mean": 0.0284,
+        "observed_fraction": 0.0934,
+        "error": 0.065
+      },
+      {
+        "bin": "[0.04, 0.06)",
+        "n": 525,
+        "predicted_mean": 0.0485,
+        "observed_fraction": 0.0971,
+        "error": 0.0486
+      },
+      {
+        "bin": "[0.06, 0.08)",
+        "n": 376,
+        "predicted_mean": 0.0697,
+        "observed_fraction": 0.1356,
+        "error": 0.0659
+      },
+      {
+        "bin": "[0.08, 0.10)",
+        "n": 308,
+        "predicted_mean": 0.0899,
+        "observed_fraction": 0.1851,
+        "error": 0.0951
+      },
+      {
+        "bin": "[0.10, 0.12)",
+        "n": 221,
+        "predicted_mean": 0.11,
+        "observed_fraction": 0.2398,
+        "error": 0.1298
+      },
+      {
+        "bin": "[0.12, 0.14)",
+        "n": 157,
+        "predicted_mean": 0.1297,
+        "observed_fraction": 0.2293,
+        "error": 0.0996
+      },
+      {
+        "bin": "[0.14, 0.16)",
+        "n": 94,
+        "predicted_mean": 0.1498,
+        "observed_fraction": 0.3085,
+        "error": 0.1587
+      },
+      {
+        "bin": "[0.16, 0.18)",
+        "n": 114,
+        "predicted_mean": 0.1693,
+        "observed_fraction": 0.3509,
+        "error": 0.1815
+      },
+      {
+        "bin": "[0.18, 0.20)",
+        "n": 84,
+        "predicted_mean": 0.1889,
+        "observed_fraction": 0.4286,
+        "error": 0.2397
+      },
+      {
+        "bin": "[0.20, 0.40)",
+        "n": 458,
+        "predicted_mean": 0.2782,
+        "observed_fraction": 0.5066,
+        "error": 0.2283
+      },
+      {
+        "bin": "[0.40, 0.60)",
+        "n": 248,
+        "predicted_mean": 0.4965,
+        "observed_fraction": 0.6694,
+        "error": 0.1729
+      },
+      {
+        "bin": "[0.60, 0.80)",
+        "n": 294,
+        "predicted_mean": 0.7129,
+        "observed_fraction": 0.8095,
+        "error": 0.0966
+      },
+      {
+        "bin": "[0.80, 1.00)",
+        "n": 678,
+        "predicted_mean": 0.9425,
+        "observed_fraction": 0.9528,
+        "error": 0.0103
+      }
+    ],
+    "calibration_error_near_pstar": {
+      "interval": "[0.06, 0.10)",
+      "error_before_isotonic": 0.0791,
+      "error_after_isotonic": 0.0236,
+      "improvement_factor": 3.35
+    },
+    "isotonic_recalibrated_roi": {
+      "TP": 1704,
+      "FN": 139,
+      "FP": 2428,
+      "TN": 9830,
+      "protected_total": 4132,
+      "pooled_recall": 0.9246,
+      "total_cost_eur": 2071700.0,
+      "mean_cost_per_night_eur": 35113.56
+    },
+    "rmse_per_night_diff_farm_minus_oracle": {
+      "mean_diff": 0.0,
+      "std_diff": 0.0225,
+      "min_diff": -0.0719,
+      "max_diff": 0.0539,
+      "note": "Per-night RMSE difference between Farm (b) and Oracle is centered exactly at 0.000\u00b0C across 59 nights."
+    },
+    "explanation_of_4d_vs_4e_discrepancy": "In Phase 4d, the reliability evaluation in [0.1, 0.2) was evaluated on the well-drained slope/non-pocket parcels (N=495, observed frost fraction 0.1657 \u2248 0.166), where the linear elevation lapse rate is valid and predictions are well-calibrated (predicted mean 0.14 vs observed 0.166). In contrast, Phase 4e pooled ALL 14,101 parcel-nights across the vineyard including the 24 frost-pocket parcels. Because deep cold pooling in the valley floor is non-linear, parcels predicted at 10-20% freeze at a much higher observed rate of 28.96% \u2248 0.29 (N=670). Out-of-fold isotonic recalibration corrects this distortion, reducing calibration error near p* from 0.0791 down to 0.0236."
+  },
+  "disaggregated_roi_and_sensitivities": {
+    "parameters": {
+      "cost_per_parcel_night": 350.0,
+      "loss_per_parcel": 4500.0,
+      "break_even_ratio": 12.86,
+      "optimal_action_threshold_p_star": 0.0778
+    },
+    "hero_night_showcase": {
+      "A": {
+        "TP": 0,
+        "FN": 49,
+        "FP": 0,
+        "TN": 190,
+        "frozen": 49,
+        "protected": 0,
+        "recall_pstar": 0.0,
+        "precision": 0.0,
+        "protection_cost": 0.0,
+        "crop_loss": 220500.0,
+        "false_alarm_cost": 0.0,
+        "total_expenditure": 220500.0
+      },
+      "B1": {
+        "TP": 0,
+        "FN": 49,
+        "FP": 0,
+        "TN": 190,
+        "frozen": 49,
+        "protected": 0,
+        "recall_pstar": 0.0,
+        "precision": 0.0,
+        "protection_cost": 0.0,
+        "crop_loss": 220500.0,
+        "false_alarm_cost": 0.0,
+        "total_expenditure": 220500.0
+      },
+      "B2": {
+        "TP": 49,
+        "FN": 0,
+        "FP": 190,
+        "TN": 0,
+        "frozen": 49,
+        "protected": 239,
+        "recall_pstar": 1.0,
+        "precision": 0.205,
+        "protection_cost": 83650.0,
+        "crop_loss": 0.0,
+        "false_alarm_cost": 66500.0,
+        "total_expenditure": 83650.0
+      },
+      "B3_m2": {
+        "TP": 0,
+        "FN": 49,
+        "FP": 0,
+        "TN": 190,
+        "frozen": 49,
+        "protected": 0,
+        "recall_pstar": 0.0,
+        "precision": 0.0,
+        "protection_cost": 0.0,
+        "crop_loss": 220500.0,
+        "false_alarm_cost": 0.0,
+        "total_expenditure": 220500.0
+      },
+      "B3_m3": {
+        "TP": 49,
+        "FN": 0,
+        "FP": 190,
+        "TN": 0,
+        "frozen": 49,
+        "protected": 239,
+        "recall_pstar": 1.0,
+        "precision": 0.205,
+        "protection_cost": 83650.0,
+        "crop_loss": 0.0,
+        "false_alarm_cost": 66500.0,
+        "total_expenditure": 83650.0
+      },
+      "B3_m4": {
+        "TP": 49,
+        "FN": 0,
+        "FP": 190,
+        "TN": 0,
+        "frozen": 49,
+        "protected": 239,
+        "recall_pstar": 1.0,
+        "precision": 0.205,
+        "protection_cost": 83650.0,
+        "crop_loss": 0.0,
+        "false_alarm_cost": 66500.0,
+        "total_expenditure": 83650.0
+      },
+      "B4_m2": {
+        "TP": 0,
+        "FN": 49,
+        "FP": 0,
+        "TN": 190,
+        "frozen": 49,
+        "protected": 0,
+        "recall_pstar": 0.0,
+        "precision": 0.0,
+        "protection_cost": 0.0,
+        "crop_loss": 220500.0,
+        "false_alarm_cost": 0.0,
+        "total_expenditure": 220500.0
+      },
+      "B4_m3": {
+        "TP": 21,
+        "FN": 28,
+        "FP": 3,
+        "TN": 187,
+        "frozen": 49,
+        "protected": 24,
+        "recall_pstar": 0.4286,
+        "precision": 0.875,
+        "protection_cost": 8400.0,
+        "crop_loss": 126000.0,
+        "false_alarm_cost": 1050.0,
+        "total_expenditure": 134400.0
+      },
+      "B4_m4": {
+        "TP": 21,
+        "FN": 28,
+        "FP": 3,
+        "TN": 187,
+        "frozen": 49,
+        "protected": 24,
+        "recall_pstar": 0.4286,
+        "precision": 0.875,
+        "protection_cost": 8400.0,
+        "crop_loss": 126000.0,
+        "false_alarm_cost": 1050.0,
+        "total_expenditure": 134400.0
+      },
+      "B4p_N54_m2": {
+        "TP": 0,
+        "FN": 49,
+        "FP": 0,
+        "TN": 190,
+        "frozen": 49,
+        "protected": 0,
+        "recall_pstar": 0.0,
+        "precision": 0.0,
+        "protection_cost": 0.0,
+        "crop_loss": 220500.0,
+        "false_alarm_cost": 0.0,
+        "total_expenditure": 220500.0
+      },
+      "B4p_N54_m3": {
+        "TP": 31,
+        "FN": 18,
+        "FP": 23,
+        "TN": 167,
+        "frozen": 49,
+        "protected": 54,
+        "recall_pstar": 0.6327,
+        "precision": 0.5741,
+        "protection_cost": 18900.0,
+        "crop_loss": 81000.0,
+        "false_alarm_cost": 8050.0,
+        "total_expenditure": 99900.0
+      },
+      "B4p_N54_m4": {
+        "TP": 31,
+        "FN": 18,
+        "FP": 23,
+        "TN": 167,
+        "frozen": 49,
+        "protected": 54,
+        "recall_pstar": 0.6327,
+        "precision": 0.5741,
+        "protection_cost": 18900.0,
+        "crop_loss": 81000.0,
+        "false_alarm_cost": 8050.0,
+        "total_expenditure": 99900.0
+      },
+      "B4p_N90_m2": {
+        "TP": 0,
+        "FN": 49,
+        "FP": 0,
+        "TN": 190,
+        "frozen": 49,
+        "protected": 0,
+        "recall_pstar": 0.0,
+        "precision": 0.0,
+        "protection_cost": 0.0,
+        "crop_loss": 220500.0,
+        "false_alarm_cost": 0.0,
+        "total_expenditure": 220500.0
+      },
+      "B4p_N90_m3": {
+        "TP": 38,
+        "FN": 11,
+        "FP": 52,
+        "TN": 138,
+        "frozen": 49,
+        "protected": 90,
+        "recall_pstar": 0.7755,
+        "precision": 0.4222,
+        "protection_cost": 31500.0,
+        "crop_loss": 49500.0,
+        "false_alarm_cost": 18200.0,
+        "total_expenditure": 81000.0
+      },
+      "B4p_N90_m4": {
+        "TP": 38,
+        "FN": 11,
+        "FP": 52,
+        "TN": 138,
+        "frozen": 49,
+        "protected": 90,
+        "recall_pstar": 0.7755,
+        "precision": 0.4222,
+        "protection_cost": 31500.0,
+        "crop_loss": 49500.0,
+        "false_alarm_cost": 18200.0,
+        "total_expenditure": 81000.0
+      },
+      "B4p_N128_m2": {
+        "TP": 0,
+        "FN": 49,
+        "FP": 0,
+        "TN": 190,
+        "frozen": 49,
+        "protected": 0,
+        "recall_pstar": 0.0,
+        "precision": 0.0,
+        "protection_cost": 0.0,
+        "crop_loss": 220500.0,
+        "false_alarm_cost": 0.0,
+        "total_expenditure": 220500.0
+      },
+      "B4p_N128_m3": {
+        "TP": 40,
+        "FN": 9,
+        "FP": 88,
+        "TN": 102,
+        "frozen": 49,
+        "protected": 128,
+        "recall_pstar": 0.8163,
+        "precision": 0.3125,
+        "protection_cost": 44800.0,
+        "crop_loss": 40500.0,
+        "false_alarm_cost": 30800.0,
+        "total_expenditure": 85300.0
+      },
+      "B4p_N128_m4": {
+        "TP": 40,
+        "FN": 9,
+        "FP": 88,
+        "TN": 102,
+        "frozen": 49,
+        "protected": 128,
+        "recall_pstar": 0.8163,
+        "precision": 0.3125,
+        "protection_cost": 44800.0,
+        "crop_loss": 40500.0,
+        "false_alarm_cost": 30800.0,
+        "total_expenditure": 85300.0
+      },
+      "B4p_N160_m2": {
+        "TP": 0,
+        "FN": 49,
+        "FP": 0,
+        "TN": 190,
+        "frozen": 49,
+        "protected": 0,
+        "recall_pstar": 0.0,
+        "precision": 0.0,
+        "protection_cost": 0.0,
+        "crop_loss": 220500.0,
+        "false_alarm_cost": 0.0,
+        "total_expenditure": 220500.0
+      },
+      "B4p_N160_m3": {
+        "TP": 47,
+        "FN": 2,
+        "FP": 113,
+        "TN": 77,
+        "frozen": 49,
+        "protected": 160,
+        "recall_pstar": 0.9592,
+        "precision": 0.2938,
+        "protection_cost": 56000.0,
+        "crop_loss": 9000.0,
+        "false_alarm_cost": 39550.0,
+        "total_expenditure": 65000.0
+      },
+      "B4p_N160_m4": {
+        "TP": 47,
+        "FN": 2,
+        "FP": 113,
+        "TN": 77,
+        "frozen": 49,
+        "protected": 160,
+        "recall_pstar": 0.9592,
+        "precision": 0.2938,
+        "protection_cost": 56000.0,
+        "crop_loss": 9000.0,
+        "false_alarm_cost": 39550.0,
+        "total_expenditure": 65000.0
+      },
+      "C_k6": {
+        "TP": 27,
+        "FN": 22,
+        "FP": 22,
+        "TN": 168,
+        "frozen": 49,
+        "protected": 49,
+        "recall_pstar": 0.551,
+        "precision": 0.551,
+        "protection_cost": 17150.0,
+        "crop_loss": 99000.0,
+        "false_alarm_cost": 7700.0,
+        "total_expenditure": 116150.0
+      },
+      "C_k8": {
+        "TP": 35,
+        "FN": 14,
+        "FP": 50,
+        "TN": 140,
+        "frozen": 49,
+        "protected": 85,
+        "recall_pstar": 0.7143,
+        "precision": 0.4118,
+        "protection_cost": 29750.0,
+        "crop_loss": 63000.0,
+        "false_alarm_cost": 17500.0,
+        "total_expenditure": 92750.0
+      },
+      "B4p_m3": {
+        "TP": 40,
+        "FN": 9,
+        "FP": 88,
+        "TN": 102,
+        "frozen": 49,
+        "protected": 128,
+        "recall_pstar": 0.8163,
+        "precision": 0.3125,
+        "protection_cost": 44800.0,
+        "crop_loss": 40500.0,
+        "false_alarm_cost": 30800.0,
+        "total_expenditure": 85300.0
+      },
+      "strategy_a": {
+        "TP": 0,
+        "FN": 49,
+        "FP": 0,
+        "TN": 190,
+        "frozen": 49,
+        "protected": 0,
+        "recall_pstar": 0.0,
+        "precision": 0.0,
+        "protection_cost": 0.0,
+        "crop_loss": 220500.0,
+        "false_alarm_cost": 0.0,
+        "total_expenditure": 220500.0
+      },
+      "strategy_b1": {
+        "TP": 0,
+        "FN": 49,
+        "FP": 0,
+        "TN": 190,
+        "frozen": 49,
+        "protected": 0,
+        "recall_pstar": 0.0,
+        "precision": 0.0,
+        "protection_cost": 0.0,
+        "crop_loss": 220500.0,
+        "false_alarm_cost": 0.0,
+        "total_expenditure": 220500.0
+      },
+      "strategy_b2": {
+        "TP": 49,
+        "FN": 0,
+        "FP": 190,
+        "TN": 0,
+        "frozen": 49,
+        "protected": 239,
+        "recall_pstar": 1.0,
+        "precision": 0.205,
+        "protection_cost": 83650.0,
+        "crop_loss": 0.0,
+        "false_alarm_cost": 66500.0,
+        "total_expenditure": 83650.0
+      },
+      "strategy_b3_m2_k6": {
+        "TP": 0,
+        "FN": 49,
+        "FP": 0,
+        "TN": 190,
+        "frozen": 49,
+        "protected": 0,
+        "recall_pstar": 0.0,
+        "precision": 0.0,
+        "protection_cost": 0.0,
+        "crop_loss": 220500.0,
+        "false_alarm_cost": 0.0,
+        "total_expenditure": 220500.0
+      },
+      "strategy_b3_m3_k6": {
+        "TP": 49,
+        "FN": 0,
+        "FP": 190,
+        "TN": 0,
+        "frozen": 49,
+        "protected": 239,
+        "recall_pstar": 1.0,
+        "precision": 0.205,
+        "protection_cost": 83650.0,
+        "crop_loss": 0.0,
+        "false_alarm_cost": 66500.0,
+        "total_expenditure": 83650.0
+      },
+      "strategy_b3_m4_k6": {
+        "TP": 49,
+        "FN": 0,
+        "FP": 190,
+        "TN": 0,
+        "frozen": 49,
+        "protected": 239,
+        "recall_pstar": 1.0,
+        "precision": 0.205,
+        "protection_cost": 83650.0,
+        "crop_loss": 0.0,
+        "false_alarm_cost": 66500.0,
+        "total_expenditure": 83650.0
+      },
+      "strategy_b4_m2_k6": {
+        "TP": 0,
+        "FN": 49,
+        "FP": 0,
+        "TN": 190,
+        "frozen": 49,
+        "protected": 0,
+        "recall_pstar": 0.0,
+        "precision": 0.0,
+        "protection_cost": 0.0,
+        "crop_loss": 220500.0,
+        "false_alarm_cost": 0.0,
+        "total_expenditure": 220500.0
+      },
+      "strategy_b4_m3_k6": {
+        "TP": 21,
+        "FN": 28,
+        "FP": 3,
+        "TN": 187,
+        "frozen": 49,
+        "protected": 24,
+        "recall_pstar": 0.4286,
+        "precision": 0.875,
+        "protection_cost": 8400.0,
+        "crop_loss": 126000.0,
+        "false_alarm_cost": 1050.0,
+        "total_expenditure": 134400.0
+      },
+      "strategy_b4_m4_k6": {
+        "TP": 21,
+        "FN": 28,
+        "FP": 3,
+        "TN": 187,
+        "frozen": 49,
+        "protected": 24,
+        "recall_pstar": 0.4286,
+        "precision": 0.875,
+        "protection_cost": 8400.0,
+        "crop_loss": 126000.0,
+        "false_alarm_cost": 1050.0,
+        "total_expenditure": 134400.0
+      },
+      "strategy_c_k6": {
+        "TP": 27,
+        "FN": 22,
+        "FP": 22,
+        "TN": 168,
+        "frozen": 49,
+        "protected": 49,
+        "recall_pstar": 0.551,
+        "precision": 0.551,
+        "protection_cost": 17150.0,
+        "crop_loss": 99000.0,
+        "false_alarm_cost": 7700.0,
+        "total_expenditure": 116150.0
+      },
+      "strategy_c_k8": {
+        "TP": 35,
+        "FN": 14,
+        "FP": 50,
+        "TN": 140,
+        "frozen": 49,
+        "protected": 85,
+        "recall_pstar": 0.7143,
+        "precision": 0.4118,
+        "protection_cost": 29750.0,
+        "crop_loss": 63000.0,
+        "false_alarm_cost": 17500.0,
+        "total_expenditure": 92750.0
+      }
+    },
+    "training_counts_k6": {
+      "all_59_nights": {
+        "C": {
+          "TP": 1539,
+          "FN": 304,
+          "FP": 1163,
+          "TN": 11095,
+          "frozen": 1843,
+          "protected": 2702,
+          "protection_cost": 945700.0,
+          "crop_loss": 1368000.0,
+          "false_alarm_cost": 407050.0,
+          "total_expenditure": 2313700.0,
+          "recall_pstar": 0.8351,
+          "mean_expenditure_per_night": 39215.25,
+          "mean_protected_per_night": 45.8,
+          "mean_damaged_per_night": 5.15
+        }
+      }
+    },
+    "training_counts_k8": {
+      "all_59_nights": {
+        "A": {
+          "TP": 0,
+          "FN": 1843,
+          "FP": 0,
+          "TN": 12258,
+          "frozen": 1843,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 8293500.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 8293500.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 140567.8,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 31.24
+        },
+        "B1": {
+          "TP": 673,
+          "FN": 1170,
+          "FP": 44,
+          "TN": 12214,
+          "frozen": 1843,
+          "protected": 717,
+          "protection_cost": 250950.0,
+          "crop_loss": 5265000.0,
+          "false_alarm_cost": 15400.0,
+          "total_expenditure": 5515950.0,
+          "recall_pstar": 0.3652,
+          "mean_expenditure_per_night": 93490.68,
+          "mean_protected_per_night": 12.15,
+          "mean_damaged_per_night": 19.83
+        },
+        "B2": {
+          "TP": 1843,
+          "FN": 0,
+          "FP": 12258,
+          "TN": 0,
+          "frozen": 1843,
+          "protected": 14101,
+          "protection_cost": 4935350.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 4290300.0,
+          "total_expenditure": 4935350.0,
+          "recall_pstar": 1.0,
+          "mean_expenditure_per_night": 83650.0,
+          "mean_protected_per_night": 239.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B3_m2": {
+          "TP": 1254,
+          "FN": 589,
+          "FP": 1136,
+          "TN": 11122,
+          "frozen": 1843,
+          "protected": 2390,
+          "protection_cost": 836500.0,
+          "crop_loss": 2650500.0,
+          "false_alarm_cost": 397600.0,
+          "total_expenditure": 3487000.0,
+          "recall_pstar": 0.6804,
+          "mean_expenditure_per_night": 59101.69,
+          "mean_protected_per_night": 40.51,
+          "mean_damaged_per_night": 9.98
+        },
+        "B3_m3": {
+          "TP": 1703,
+          "FN": 140,
+          "FP": 4272,
+          "TN": 7986,
+          "frozen": 1843,
+          "protected": 5975,
+          "protection_cost": 2091250.0,
+          "crop_loss": 630000.0,
+          "false_alarm_cost": 1495200.0,
+          "total_expenditure": 2721250.0,
+          "recall_pstar": 0.924,
+          "mean_expenditure_per_night": 46122.88,
+          "mean_protected_per_night": 101.27,
+          "mean_damaged_per_night": 2.37
+        },
+        "B3_m4": {
+          "TP": 1843,
+          "FN": 0,
+          "FP": 7717,
+          "TN": 4541,
+          "frozen": 1843,
+          "protected": 9560,
+          "protection_cost": 3346000.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 2700950.0,
+          "total_expenditure": 3346000.0,
+          "recall_pstar": 1.0,
+          "mean_expenditure_per_night": 56711.86,
+          "mean_protected_per_night": 162.03,
+          "mean_damaged_per_night": 0.0
+        },
+        "B4_m2": {
+          "TP": 233,
+          "FN": 1610,
+          "FP": 7,
+          "TN": 12251,
+          "frozen": 1843,
+          "protected": 240,
+          "protection_cost": 84000.0,
+          "crop_loss": 7245000.0,
+          "false_alarm_cost": 2450.0,
+          "total_expenditure": 7329000.0,
+          "recall_pstar": 0.1264,
+          "mean_expenditure_per_night": 124220.34,
+          "mean_protected_per_night": 4.07,
+          "mean_damaged_per_night": 27.29
+        },
+        "B4_m3": {
+          "TP": 496,
+          "FN": 1347,
+          "FP": 104,
+          "TN": 12154,
+          "frozen": 1843,
+          "protected": 600,
+          "protection_cost": 210000.0,
+          "crop_loss": 6061500.0,
+          "false_alarm_cost": 36400.0,
+          "total_expenditure": 6271500.0,
+          "recall_pstar": 0.2691,
+          "mean_expenditure_per_night": 106296.61,
+          "mean_protected_per_night": 10.17,
+          "mean_damaged_per_night": 22.83
+        },
+        "B4_m4": {
+          "TP": 625,
+          "FN": 1218,
+          "FP": 335,
+          "TN": 11923,
+          "frozen": 1843,
+          "protected": 960,
+          "protection_cost": 336000.0,
+          "crop_loss": 5481000.0,
+          "false_alarm_cost": 117250.0,
+          "total_expenditure": 5817000.0,
+          "recall_pstar": 0.3391,
+          "mean_expenditure_per_night": 98593.22,
+          "mean_protected_per_night": 16.27,
+          "mean_damaged_per_night": 20.64
+        },
+        "B4p_N54_m2": {
+          "TP": 450,
+          "FN": 1393,
+          "FP": 90,
+          "TN": 12168,
+          "frozen": 1843,
+          "protected": 540,
+          "protection_cost": 189000.0,
+          "crop_loss": 6268500.0,
+          "false_alarm_cost": 31500.0,
+          "total_expenditure": 6457500.0,
+          "recall_pstar": 0.2442,
+          "mean_expenditure_per_night": 109449.15,
+          "mean_protected_per_night": 9.15,
+          "mean_damaged_per_night": 23.61
+        },
+        "B4p_N54_m3": {
+          "TP": 796,
+          "FN": 1047,
+          "FP": 554,
+          "TN": 11704,
+          "frozen": 1843,
+          "protected": 1350,
+          "protection_cost": 472500.0,
+          "crop_loss": 4711500.0,
+          "false_alarm_cost": 193900.0,
+          "total_expenditure": 5184000.0,
+          "recall_pstar": 0.4319,
+          "mean_expenditure_per_night": 87864.41,
+          "mean_protected_per_night": 22.88,
+          "mean_damaged_per_night": 17.75
+        },
+        "B4p_N54_m4": {
+          "TP": 936,
+          "FN": 907,
+          "FP": 1224,
+          "TN": 11034,
+          "frozen": 1843,
+          "protected": 2160,
+          "protection_cost": 756000.0,
+          "crop_loss": 4081500.0,
+          "false_alarm_cost": 428400.0,
+          "total_expenditure": 4837500.0,
+          "recall_pstar": 0.5079,
+          "mean_expenditure_per_night": 81991.53,
+          "mean_protected_per_night": 36.61,
+          "mean_damaged_per_night": 15.37
+        },
+        "B4p_N90_m2": {
+          "TP": 629,
+          "FN": 1214,
+          "FP": 271,
+          "TN": 11987,
+          "frozen": 1843,
+          "protected": 900,
+          "protection_cost": 315000.0,
+          "crop_loss": 5463000.0,
+          "false_alarm_cost": 94850.0,
+          "total_expenditure": 5778000.0,
+          "recall_pstar": 0.3413,
+          "mean_expenditure_per_night": 97932.2,
+          "mean_protected_per_night": 15.25,
+          "mean_damaged_per_night": 20.58
+        },
+        "B4p_N90_m3": {
+          "TP": 1011,
+          "FN": 832,
+          "FP": 1239,
+          "TN": 11019,
+          "frozen": 1843,
+          "protected": 2250,
+          "protection_cost": 787500.0,
+          "crop_loss": 3744000.0,
+          "false_alarm_cost": 433650.0,
+          "total_expenditure": 4531500.0,
+          "recall_pstar": 0.5486,
+          "mean_expenditure_per_night": 76805.08,
+          "mean_protected_per_night": 38.14,
+          "mean_damaged_per_night": 14.1
+        },
+        "B4p_N90_m4": {
+          "TP": 1151,
+          "FN": 692,
+          "FP": 2449,
+          "TN": 9809,
+          "frozen": 1843,
+          "protected": 3600,
+          "protection_cost": 1260000.0,
+          "crop_loss": 3114000.0,
+          "false_alarm_cost": 857150.0,
+          "total_expenditure": 4374000.0,
+          "recall_pstar": 0.6245,
+          "mean_expenditure_per_night": 74135.59,
+          "mean_protected_per_night": 61.02,
+          "mean_damaged_per_night": 11.73
+        },
+        "B4p_N128_m2": {
+          "TP": 788,
+          "FN": 1055,
+          "FP": 492,
+          "TN": 11766,
+          "frozen": 1843,
+          "protected": 1280,
+          "protection_cost": 448000.0,
+          "crop_loss": 4747500.0,
+          "false_alarm_cost": 172200.0,
+          "total_expenditure": 5195500.0,
+          "recall_pstar": 0.4276,
+          "mean_expenditure_per_night": 88059.32,
+          "mean_protected_per_night": 21.69,
+          "mean_damaged_per_night": 17.88
+        },
+        "B4p_N128_m3": {
+          "TP": 1178,
+          "FN": 665,
+          "FP": 2022,
+          "TN": 10236,
+          "frozen": 1843,
+          "protected": 3200,
+          "protection_cost": 1120000.0,
+          "crop_loss": 2992500.0,
+          "false_alarm_cost": 707700.0,
+          "total_expenditure": 4112500.0,
+          "recall_pstar": 0.6392,
+          "mean_expenditure_per_night": 69703.39,
+          "mean_protected_per_night": 54.24,
+          "mean_damaged_per_night": 11.27
+        },
+        "B4p_N128_m4": {
+          "TP": 1318,
+          "FN": 525,
+          "FP": 3802,
+          "TN": 8456,
+          "frozen": 1843,
+          "protected": 5120,
+          "protection_cost": 1792000.0,
+          "crop_loss": 2362500.0,
+          "false_alarm_cost": 1330700.0,
+          "total_expenditure": 4154500.0,
+          "recall_pstar": 0.7151,
+          "mean_expenditure_per_night": 70415.25,
+          "mean_protected_per_night": 86.78,
+          "mean_damaged_per_night": 8.9
+        },
+        "B4p_N160_m2": {
+          "TP": 948,
+          "FN": 895,
+          "FP": 652,
+          "TN": 11606,
+          "frozen": 1843,
+          "protected": 1600,
+          "protection_cost": 560000.0,
+          "crop_loss": 4027500.0,
+          "false_alarm_cost": 228200.0,
+          "total_expenditure": 4587500.0,
+          "recall_pstar": 0.5144,
+          "mean_expenditure_per_night": 77754.24,
+          "mean_protected_per_night": 27.12,
+          "mean_damaged_per_night": 15.17
+        },
+        "B4p_N160_m3": {
+          "TP": 1384,
+          "FN": 459,
+          "FP": 2616,
+          "TN": 9642,
+          "frozen": 1843,
+          "protected": 4000,
+          "protection_cost": 1400000.0,
+          "crop_loss": 2065500.0,
+          "false_alarm_cost": 915600.0,
+          "total_expenditure": 3465500.0,
+          "recall_pstar": 0.7509,
+          "mean_expenditure_per_night": 58737.29,
+          "mean_protected_per_night": 67.8,
+          "mean_damaged_per_night": 7.78
+        },
+        "B4p_N160_m4": {
+          "TP": 1524,
+          "FN": 319,
+          "FP": 4876,
+          "TN": 7382,
+          "frozen": 1843,
+          "protected": 6400,
+          "protection_cost": 2240000.0,
+          "crop_loss": 1435500.0,
+          "false_alarm_cost": 1706600.0,
+          "total_expenditure": 3675500.0,
+          "recall_pstar": 0.8269,
+          "mean_expenditure_per_night": 62296.61,
+          "mean_protected_per_night": 108.47,
+          "mean_damaged_per_night": 5.41
+        },
+        "C_k6": {
+          "TP": 1539,
+          "FN": 304,
+          "FP": 1163,
+          "TN": 11095,
+          "frozen": 1843,
+          "protected": 2702,
+          "protection_cost": 945700.0,
+          "crop_loss": 1368000.0,
+          "false_alarm_cost": 407050.0,
+          "total_expenditure": 2313700.0,
+          "recall_pstar": 0.8351,
+          "mean_expenditure_per_night": 39215.25,
+          "mean_protected_per_night": 45.8,
+          "mean_damaged_per_night": 5.15
+        },
+        "C_k8": {
+          "TP": 1655,
+          "FN": 188,
+          "FP": 1552,
+          "TN": 10706,
+          "frozen": 1843,
+          "protected": 3207,
+          "protection_cost": 1122450.0,
+          "crop_loss": 846000.0,
+          "false_alarm_cost": 543200.0,
+          "total_expenditure": 1968450.0,
+          "recall_pstar": 0.898,
+          "mean_expenditure_per_night": 33363.56,
+          "mean_protected_per_night": 54.36,
+          "mean_damaged_per_night": 3.19
+        },
+        "B4p_m3": {
+          "TP": 1178,
+          "FN": 665,
+          "FP": 2022,
+          "TN": 10236,
+          "frozen": 1843,
+          "protected": 3200,
+          "protection_cost": 1120000.0,
+          "crop_loss": 2992500.0,
+          "false_alarm_cost": 707700.0,
+          "total_expenditure": 4112500.0,
+          "recall_pstar": 0.6392,
+          "mean_expenditure_per_night": 69703.39,
+          "mean_protected_per_night": 54.24,
+          "mean_damaged_per_night": 11.27
+        }
+      },
+      "inversion_nights": {
+        "A": {
+          "TP": 0,
+          "FN": 1170,
+          "FP": 0,
+          "TN": 7673,
+          "frozen": 1170,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 5265000.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 5265000.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 142297.3,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 31.62
+        },
+        "B1": {
+          "TP": 0,
+          "FN": 1170,
+          "FP": 0,
+          "TN": 7673,
+          "frozen": 1170,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 5265000.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 5265000.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 142297.3,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 31.62
+        },
+        "B2": {
+          "TP": 1170,
+          "FN": 0,
+          "FP": 7673,
+          "TN": 0,
+          "frozen": 1170,
+          "protected": 8843,
+          "protection_cost": 3095050.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 2685550.0,
+          "total_expenditure": 3095050.0,
+          "recall_pstar": 1.0,
+          "mean_expenditure_per_night": 83650.0,
+          "mean_protected_per_night": 239.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B3_m2": {
+          "TP": 581,
+          "FN": 589,
+          "FP": 1092,
+          "TN": 6581,
+          "frozen": 1170,
+          "protected": 1673,
+          "protection_cost": 585550.0,
+          "crop_loss": 2650500.0,
+          "false_alarm_cost": 382200.0,
+          "total_expenditure": 3236050.0,
+          "recall_pstar": 0.4966,
+          "mean_expenditure_per_night": 87460.81,
+          "mean_protected_per_night": 45.22,
+          "mean_damaged_per_night": 15.92
+        },
+        "B3_m3": {
+          "TP": 1030,
+          "FN": 140,
+          "FP": 4228,
+          "TN": 3445,
+          "frozen": 1170,
+          "protected": 5258,
+          "protection_cost": 1840300.0,
+          "crop_loss": 630000.0,
+          "false_alarm_cost": 1479800.0,
+          "total_expenditure": 2470300.0,
+          "recall_pstar": 0.8803,
+          "mean_expenditure_per_night": 66764.86,
+          "mean_protected_per_night": 142.11,
+          "mean_damaged_per_night": 3.78
+        },
+        "B3_m4": {
+          "TP": 1170,
+          "FN": 0,
+          "FP": 7673,
+          "TN": 0,
+          "frozen": 1170,
+          "protected": 8843,
+          "protection_cost": 3095050.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 2685550.0,
+          "total_expenditure": 3095050.0,
+          "recall_pstar": 1.0,
+          "mean_expenditure_per_night": 83650.0,
+          "mean_protected_per_night": 239.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B4_m2": {
+          "TP": 161,
+          "FN": 1009,
+          "FP": 7,
+          "TN": 7666,
+          "frozen": 1170,
+          "protected": 168,
+          "protection_cost": 58800.0,
+          "crop_loss": 4540500.0,
+          "false_alarm_cost": 2450.0,
+          "total_expenditure": 4599300.0,
+          "recall_pstar": 0.1376,
+          "mean_expenditure_per_night": 124305.41,
+          "mean_protected_per_night": 4.54,
+          "mean_damaged_per_night": 27.27
+        },
+        "B4_m3": {
+          "TP": 424,
+          "FN": 746,
+          "FP": 104,
+          "TN": 7569,
+          "frozen": 1170,
+          "protected": 528,
+          "protection_cost": 184800.0,
+          "crop_loss": 3357000.0,
+          "false_alarm_cost": 36400.0,
+          "total_expenditure": 3541800.0,
+          "recall_pstar": 0.3624,
+          "mean_expenditure_per_night": 95724.32,
+          "mean_protected_per_night": 14.27,
+          "mean_damaged_per_night": 20.16
+        },
+        "B4_m4": {
+          "TP": 553,
+          "FN": 617,
+          "FP": 335,
+          "TN": 7338,
+          "frozen": 1170,
+          "protected": 888,
+          "protection_cost": 310800.0,
+          "crop_loss": 2776500.0,
+          "false_alarm_cost": 117250.0,
+          "total_expenditure": 3087300.0,
+          "recall_pstar": 0.4726,
+          "mean_expenditure_per_night": 83440.54,
+          "mean_protected_per_night": 24.0,
+          "mean_damaged_per_night": 16.68
+        },
+        "B4p_N54_m2": {
+          "TP": 289,
+          "FN": 881,
+          "FP": 89,
+          "TN": 7584,
+          "frozen": 1170,
+          "protected": 378,
+          "protection_cost": 132300.0,
+          "crop_loss": 3964500.0,
+          "false_alarm_cost": 31150.0,
+          "total_expenditure": 4096800.0,
+          "recall_pstar": 0.247,
+          "mean_expenditure_per_night": 110724.32,
+          "mean_protected_per_night": 10.22,
+          "mean_damaged_per_night": 23.81
+        },
+        "B4p_N54_m3": {
+          "TP": 635,
+          "FN": 535,
+          "FP": 553,
+          "TN": 7120,
+          "frozen": 1170,
+          "protected": 1188,
+          "protection_cost": 415800.0,
+          "crop_loss": 2407500.0,
+          "false_alarm_cost": 193550.0,
+          "total_expenditure": 2823300.0,
+          "recall_pstar": 0.5427,
+          "mean_expenditure_per_night": 76305.41,
+          "mean_protected_per_night": 32.11,
+          "mean_damaged_per_night": 14.46
+        },
+        "B4p_N54_m4": {
+          "TP": 775,
+          "FN": 395,
+          "FP": 1223,
+          "TN": 6450,
+          "frozen": 1170,
+          "protected": 1998,
+          "protection_cost": 699300.0,
+          "crop_loss": 1777500.0,
+          "false_alarm_cost": 428050.0,
+          "total_expenditure": 2476800.0,
+          "recall_pstar": 0.6624,
+          "mean_expenditure_per_night": 66940.54,
+          "mean_protected_per_night": 54.0,
+          "mean_damaged_per_night": 10.68
+        },
+        "B4p_N90_m2": {
+          "TP": 367,
+          "FN": 803,
+          "FP": 263,
+          "TN": 7410,
+          "frozen": 1170,
+          "protected": 630,
+          "protection_cost": 220500.0,
+          "crop_loss": 3613500.0,
+          "false_alarm_cost": 92050.0,
+          "total_expenditure": 3834000.0,
+          "recall_pstar": 0.3137,
+          "mean_expenditure_per_night": 103621.62,
+          "mean_protected_per_night": 17.03,
+          "mean_damaged_per_night": 21.7
+        },
+        "B4p_N90_m3": {
+          "TP": 749,
+          "FN": 421,
+          "FP": 1231,
+          "TN": 6442,
+          "frozen": 1170,
+          "protected": 1980,
+          "protection_cost": 693000.0,
+          "crop_loss": 1894500.0,
+          "false_alarm_cost": 430850.0,
+          "total_expenditure": 2587500.0,
+          "recall_pstar": 0.6402,
+          "mean_expenditure_per_night": 69932.43,
+          "mean_protected_per_night": 53.51,
+          "mean_damaged_per_night": 11.38
+        },
+        "B4p_N90_m4": {
+          "TP": 889,
+          "FN": 281,
+          "FP": 2441,
+          "TN": 5232,
+          "frozen": 1170,
+          "protected": 3330,
+          "protection_cost": 1165500.0,
+          "crop_loss": 1264500.0,
+          "false_alarm_cost": 854350.0,
+          "total_expenditure": 2430000.0,
+          "recall_pstar": 0.7598,
+          "mean_expenditure_per_night": 65675.68,
+          "mean_protected_per_night": 90.0,
+          "mean_damaged_per_night": 7.59
+        },
+        "B4p_N128_m2": {
+          "TP": 423,
+          "FN": 747,
+          "FP": 473,
+          "TN": 7200,
+          "frozen": 1170,
+          "protected": 896,
+          "protection_cost": 313600.0,
+          "crop_loss": 3361500.0,
+          "false_alarm_cost": 165550.0,
+          "total_expenditure": 3675100.0,
+          "recall_pstar": 0.3615,
+          "mean_expenditure_per_night": 99327.03,
+          "mean_protected_per_night": 24.22,
+          "mean_damaged_per_night": 20.19
+        },
+        "B4p_N128_m3": {
+          "TP": 813,
+          "FN": 357,
+          "FP": 2003,
+          "TN": 5670,
+          "frozen": 1170,
+          "protected": 2816,
+          "protection_cost": 985600.0,
+          "crop_loss": 1606500.0,
+          "false_alarm_cost": 701050.0,
+          "total_expenditure": 2592100.0,
+          "recall_pstar": 0.6949,
+          "mean_expenditure_per_night": 70056.76,
+          "mean_protected_per_night": 76.11,
+          "mean_damaged_per_night": 9.65
+        },
+        "B4p_N128_m4": {
+          "TP": 953,
+          "FN": 217,
+          "FP": 3783,
+          "TN": 3890,
+          "frozen": 1170,
+          "protected": 4736,
+          "protection_cost": 1657600.0,
+          "crop_loss": 976500.0,
+          "false_alarm_cost": 1324050.0,
+          "total_expenditure": 2634100.0,
+          "recall_pstar": 0.8145,
+          "mean_expenditure_per_night": 71191.89,
+          "mean_protected_per_night": 128.0,
+          "mean_damaged_per_night": 5.86
+        },
+        "B4p_N160_m2": {
+          "TP": 490,
+          "FN": 680,
+          "FP": 630,
+          "TN": 7043,
+          "frozen": 1170,
+          "protected": 1120,
+          "protection_cost": 392000.0,
+          "crop_loss": 3060000.0,
+          "false_alarm_cost": 220500.0,
+          "total_expenditure": 3452000.0,
+          "recall_pstar": 0.4188,
+          "mean_expenditure_per_night": 93297.3,
+          "mean_protected_per_night": 30.27,
+          "mean_damaged_per_night": 18.38
+        },
+        "B4p_N160_m3": {
+          "TP": 926,
+          "FN": 244,
+          "FP": 2594,
+          "TN": 5079,
+          "frozen": 1170,
+          "protected": 3520,
+          "protection_cost": 1232000.0,
+          "crop_loss": 1098000.0,
+          "false_alarm_cost": 907900.0,
+          "total_expenditure": 2330000.0,
+          "recall_pstar": 0.7915,
+          "mean_expenditure_per_night": 62972.97,
+          "mean_protected_per_night": 95.14,
+          "mean_damaged_per_night": 6.59
+        },
+        "B4p_N160_m4": {
+          "TP": 1066,
+          "FN": 104,
+          "FP": 4854,
+          "TN": 2819,
+          "frozen": 1170,
+          "protected": 5920,
+          "protection_cost": 2072000.0,
+          "crop_loss": 468000.0,
+          "false_alarm_cost": 1698900.0,
+          "total_expenditure": 2540000.0,
+          "recall_pstar": 0.9111,
+          "mean_expenditure_per_night": 68648.65,
+          "mean_protected_per_night": 160.0,
+          "mean_damaged_per_night": 2.81
+        },
+        "C_k6": {
+          "TP": 866,
+          "FN": 304,
+          "FP": 1119,
+          "TN": 6554,
+          "frozen": 1170,
+          "protected": 1985,
+          "protection_cost": 694750.0,
+          "crop_loss": 1368000.0,
+          "false_alarm_cost": 391650.0,
+          "total_expenditure": 2062750.0,
+          "recall_pstar": 0.7402,
+          "mean_expenditure_per_night": 55750.0,
+          "mean_protected_per_night": 53.65,
+          "mean_damaged_per_night": 8.22
+        },
+        "C_k8": {
+          "TP": 982,
+          "FN": 188,
+          "FP": 1508,
+          "TN": 6165,
+          "frozen": 1170,
+          "protected": 2490,
+          "protection_cost": 871500.0,
+          "crop_loss": 846000.0,
+          "false_alarm_cost": 527800.0,
+          "total_expenditure": 1717500.0,
+          "recall_pstar": 0.8393,
+          "mean_expenditure_per_night": 46418.92,
+          "mean_protected_per_night": 67.3,
+          "mean_damaged_per_night": 5.08
+        },
+        "B4p_m3": {
+          "TP": 813,
+          "FN": 357,
+          "FP": 2003,
+          "TN": 5670,
+          "frozen": 1170,
+          "protected": 2816,
+          "protection_cost": 985600.0,
+          "crop_loss": 1606500.0,
+          "false_alarm_cost": 701050.0,
+          "total_expenditure": 2592100.0,
+          "recall_pstar": 0.6949,
+          "mean_expenditure_per_night": 70056.76,
+          "mean_protected_per_night": 76.11,
+          "mean_damaged_per_night": 9.65
+        }
+      },
+      "ordinary_frost_nights": {
+        "A": {
+          "TP": 0,
+          "FN": 673,
+          "FP": 0,
+          "TN": 44,
+          "frozen": 673,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 3028500.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 3028500.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 1009500.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 224.33
+        },
+        "B1": {
+          "TP": 673,
+          "FN": 0,
+          "FP": 44,
+          "TN": 0,
+          "frozen": 673,
+          "protected": 717,
+          "protection_cost": 250950.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 15400.0,
+          "total_expenditure": 250950.0,
+          "recall_pstar": 1.0,
+          "mean_expenditure_per_night": 83650.0,
+          "mean_protected_per_night": 239.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B2": {
+          "TP": 673,
+          "FN": 0,
+          "FP": 44,
+          "TN": 0,
+          "frozen": 673,
+          "protected": 717,
+          "protection_cost": 250950.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 15400.0,
+          "total_expenditure": 250950.0,
+          "recall_pstar": 1.0,
+          "mean_expenditure_per_night": 83650.0,
+          "mean_protected_per_night": 239.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B3_m2": {
+          "TP": 673,
+          "FN": 0,
+          "FP": 44,
+          "TN": 0,
+          "frozen": 673,
+          "protected": 717,
+          "protection_cost": 250950.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 15400.0,
+          "total_expenditure": 250950.0,
+          "recall_pstar": 1.0,
+          "mean_expenditure_per_night": 83650.0,
+          "mean_protected_per_night": 239.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B3_m3": {
+          "TP": 673,
+          "FN": 0,
+          "FP": 44,
+          "TN": 0,
+          "frozen": 673,
+          "protected": 717,
+          "protection_cost": 250950.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 15400.0,
+          "total_expenditure": 250950.0,
+          "recall_pstar": 1.0,
+          "mean_expenditure_per_night": 83650.0,
+          "mean_protected_per_night": 239.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B3_m4": {
+          "TP": 673,
+          "FN": 0,
+          "FP": 44,
+          "TN": 0,
+          "frozen": 673,
+          "protected": 717,
+          "protection_cost": 250950.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 15400.0,
+          "total_expenditure": 250950.0,
+          "recall_pstar": 1.0,
+          "mean_expenditure_per_night": 83650.0,
+          "mean_protected_per_night": 239.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B4_m2": {
+          "TP": 72,
+          "FN": 601,
+          "FP": 0,
+          "TN": 44,
+          "frozen": 673,
+          "protected": 72,
+          "protection_cost": 25200.0,
+          "crop_loss": 2704500.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 2729700.0,
+          "recall_pstar": 0.107,
+          "mean_expenditure_per_night": 909900.0,
+          "mean_protected_per_night": 24.0,
+          "mean_damaged_per_night": 200.33
+        },
+        "B4_m3": {
+          "TP": 72,
+          "FN": 601,
+          "FP": 0,
+          "TN": 44,
+          "frozen": 673,
+          "protected": 72,
+          "protection_cost": 25200.0,
+          "crop_loss": 2704500.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 2729700.0,
+          "recall_pstar": 0.107,
+          "mean_expenditure_per_night": 909900.0,
+          "mean_protected_per_night": 24.0,
+          "mean_damaged_per_night": 200.33
+        },
+        "B4_m4": {
+          "TP": 72,
+          "FN": 601,
+          "FP": 0,
+          "TN": 44,
+          "frozen": 673,
+          "protected": 72,
+          "protection_cost": 25200.0,
+          "crop_loss": 2704500.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 2729700.0,
+          "recall_pstar": 0.107,
+          "mean_expenditure_per_night": 909900.0,
+          "mean_protected_per_night": 24.0,
+          "mean_damaged_per_night": 200.33
+        },
+        "B4p_N54_m2": {
+          "TP": 161,
+          "FN": 512,
+          "FP": 1,
+          "TN": 43,
+          "frozen": 673,
+          "protected": 162,
+          "protection_cost": 56700.0,
+          "crop_loss": 2304000.0,
+          "false_alarm_cost": 350.0,
+          "total_expenditure": 2360700.0,
+          "recall_pstar": 0.2392,
+          "mean_expenditure_per_night": 786900.0,
+          "mean_protected_per_night": 54.0,
+          "mean_damaged_per_night": 170.67
+        },
+        "B4p_N54_m3": {
+          "TP": 161,
+          "FN": 512,
+          "FP": 1,
+          "TN": 43,
+          "frozen": 673,
+          "protected": 162,
+          "protection_cost": 56700.0,
+          "crop_loss": 2304000.0,
+          "false_alarm_cost": 350.0,
+          "total_expenditure": 2360700.0,
+          "recall_pstar": 0.2392,
+          "mean_expenditure_per_night": 786900.0,
+          "mean_protected_per_night": 54.0,
+          "mean_damaged_per_night": 170.67
+        },
+        "B4p_N54_m4": {
+          "TP": 161,
+          "FN": 512,
+          "FP": 1,
+          "TN": 43,
+          "frozen": 673,
+          "protected": 162,
+          "protection_cost": 56700.0,
+          "crop_loss": 2304000.0,
+          "false_alarm_cost": 350.0,
+          "total_expenditure": 2360700.0,
+          "recall_pstar": 0.2392,
+          "mean_expenditure_per_night": 786900.0,
+          "mean_protected_per_night": 54.0,
+          "mean_damaged_per_night": 170.67
+        },
+        "B4p_N90_m2": {
+          "TP": 262,
+          "FN": 411,
+          "FP": 8,
+          "TN": 36,
+          "frozen": 673,
+          "protected": 270,
+          "protection_cost": 94500.0,
+          "crop_loss": 1849500.0,
+          "false_alarm_cost": 2800.0,
+          "total_expenditure": 1944000.0,
+          "recall_pstar": 0.3893,
+          "mean_expenditure_per_night": 648000.0,
+          "mean_protected_per_night": 90.0,
+          "mean_damaged_per_night": 137.0
+        },
+        "B4p_N90_m3": {
+          "TP": 262,
+          "FN": 411,
+          "FP": 8,
+          "TN": 36,
+          "frozen": 673,
+          "protected": 270,
+          "protection_cost": 94500.0,
+          "crop_loss": 1849500.0,
+          "false_alarm_cost": 2800.0,
+          "total_expenditure": 1944000.0,
+          "recall_pstar": 0.3893,
+          "mean_expenditure_per_night": 648000.0,
+          "mean_protected_per_night": 90.0,
+          "mean_damaged_per_night": 137.0
+        },
+        "B4p_N90_m4": {
+          "TP": 262,
+          "FN": 411,
+          "FP": 8,
+          "TN": 36,
+          "frozen": 673,
+          "protected": 270,
+          "protection_cost": 94500.0,
+          "crop_loss": 1849500.0,
+          "false_alarm_cost": 2800.0,
+          "total_expenditure": 1944000.0,
+          "recall_pstar": 0.3893,
+          "mean_expenditure_per_night": 648000.0,
+          "mean_protected_per_night": 90.0,
+          "mean_damaged_per_night": 137.0
+        },
+        "B4p_N128_m2": {
+          "TP": 365,
+          "FN": 308,
+          "FP": 19,
+          "TN": 25,
+          "frozen": 673,
+          "protected": 384,
+          "protection_cost": 134400.0,
+          "crop_loss": 1386000.0,
+          "false_alarm_cost": 6650.0,
+          "total_expenditure": 1520400.0,
+          "recall_pstar": 0.5423,
+          "mean_expenditure_per_night": 506800.0,
+          "mean_protected_per_night": 128.0,
+          "mean_damaged_per_night": 102.67
+        },
+        "B4p_N128_m3": {
+          "TP": 365,
+          "FN": 308,
+          "FP": 19,
+          "TN": 25,
+          "frozen": 673,
+          "protected": 384,
+          "protection_cost": 134400.0,
+          "crop_loss": 1386000.0,
+          "false_alarm_cost": 6650.0,
+          "total_expenditure": 1520400.0,
+          "recall_pstar": 0.5423,
+          "mean_expenditure_per_night": 506800.0,
+          "mean_protected_per_night": 128.0,
+          "mean_damaged_per_night": 102.67
+        },
+        "B4p_N128_m4": {
+          "TP": 365,
+          "FN": 308,
+          "FP": 19,
+          "TN": 25,
+          "frozen": 673,
+          "protected": 384,
+          "protection_cost": 134400.0,
+          "crop_loss": 1386000.0,
+          "false_alarm_cost": 6650.0,
+          "total_expenditure": 1520400.0,
+          "recall_pstar": 0.5423,
+          "mean_expenditure_per_night": 506800.0,
+          "mean_protected_per_night": 128.0,
+          "mean_damaged_per_night": 102.67
+        },
+        "B4p_N160_m2": {
+          "TP": 458,
+          "FN": 215,
+          "FP": 22,
+          "TN": 22,
+          "frozen": 673,
+          "protected": 480,
+          "protection_cost": 168000.0,
+          "crop_loss": 967500.0,
+          "false_alarm_cost": 7700.0,
+          "total_expenditure": 1135500.0,
+          "recall_pstar": 0.6805,
+          "mean_expenditure_per_night": 378500.0,
+          "mean_protected_per_night": 160.0,
+          "mean_damaged_per_night": 71.67
+        },
+        "B4p_N160_m3": {
+          "TP": 458,
+          "FN": 215,
+          "FP": 22,
+          "TN": 22,
+          "frozen": 673,
+          "protected": 480,
+          "protection_cost": 168000.0,
+          "crop_loss": 967500.0,
+          "false_alarm_cost": 7700.0,
+          "total_expenditure": 1135500.0,
+          "recall_pstar": 0.6805,
+          "mean_expenditure_per_night": 378500.0,
+          "mean_protected_per_night": 160.0,
+          "mean_damaged_per_night": 71.67
+        },
+        "B4p_N160_m4": {
+          "TP": 458,
+          "FN": 215,
+          "FP": 22,
+          "TN": 22,
+          "frozen": 673,
+          "protected": 480,
+          "protection_cost": 168000.0,
+          "crop_loss": 967500.0,
+          "false_alarm_cost": 7700.0,
+          "total_expenditure": 1135500.0,
+          "recall_pstar": 0.6805,
+          "mean_expenditure_per_night": 378500.0,
+          "mean_protected_per_night": 160.0,
+          "mean_damaged_per_night": 71.67
+        },
+        "C_k6": {
+          "TP": 673,
+          "FN": 0,
+          "FP": 44,
+          "TN": 0,
+          "frozen": 673,
+          "protected": 717,
+          "protection_cost": 250950.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 15400.0,
+          "total_expenditure": 250950.0,
+          "recall_pstar": 1.0,
+          "mean_expenditure_per_night": 83650.0,
+          "mean_protected_per_night": 239.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "C_k8": {
+          "TP": 673,
+          "FN": 0,
+          "FP": 44,
+          "TN": 0,
+          "frozen": 673,
+          "protected": 717,
+          "protection_cost": 250950.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 15400.0,
+          "total_expenditure": 250950.0,
+          "recall_pstar": 1.0,
+          "mean_expenditure_per_night": 83650.0,
+          "mean_protected_per_night": 239.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B4p_m3": {
+          "TP": 365,
+          "FN": 308,
+          "FP": 19,
+          "TN": 25,
+          "frozen": 673,
+          "protected": 384,
+          "protection_cost": 134400.0,
+          "crop_loss": 1386000.0,
+          "false_alarm_cost": 6650.0,
+          "total_expenditure": 1520400.0,
+          "recall_pstar": 0.5423,
+          "mean_expenditure_per_night": 506800.0,
+          "mean_protected_per_night": 128.0,
+          "mean_damaged_per_night": 102.67
+        }
+      },
+      "no_frost_nights": {
+        "A": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B1": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B2": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 4541,
+          "TN": 0,
+          "frozen": 0,
+          "protected": 4541,
+          "protection_cost": 1589350.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 1589350.0,
+          "total_expenditure": 1589350.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 83650.0,
+          "mean_protected_per_night": 239.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B3_m2": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B3_m3": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B3_m4": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B4_m2": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B4_m3": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B4_m4": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B4p_N54_m2": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B4p_N54_m3": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B4p_N54_m4": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B4p_N90_m2": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B4p_N90_m3": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B4p_N90_m4": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B4p_N128_m2": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B4p_N128_m3": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B4p_N128_m4": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B4p_N160_m2": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B4p_N160_m3": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B4p_N160_m4": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "C_k6": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "C_k8": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        },
+        "B4p_m3": {
+          "TP": 0,
+          "FN": 0,
+          "FP": 0,
+          "TN": 4541,
+          "frozen": 0,
+          "protected": 0,
+          "protection_cost": 0.0,
+          "crop_loss": 0.0,
+          "false_alarm_cost": 0.0,
+          "total_expenditure": 0.0,
+          "recall_pstar": 0.0,
+          "mean_expenditure_per_night": 0.0,
+          "mean_protected_per_night": 0.0,
+          "mean_damaged_per_night": 0.0
+        }
+      }
+    },
+    "loss_to_cost_sensitivity_curve": [
+      {
+        "loss_to_cost_ratio": 5.0,
+        "crop_loss_eur": 1750.0,
+        "p_star": 0.2,
+        "mean_n_protected_c": 40.8,
+        "integer_protected_c_total": 2405,
+        "integer_damaged_c_total": 299,
+        "mean_exp_b1": 38956.78,
+        "mean_exp_b2": 83650.0,
+        "mean_exp_b3_m3": 39597.46,
+        "mean_exp_b4p_n128_m3": 38707.63,
+        "best_baseline_strategy": "B4'(N=128)",
+        "best_baseline_exp_eur": 38707.63,
+        "c_k8_advantage_vs_best_eur": 15572.03,
+        "mean_exp_c_k8": 23135.59,
+        "c_beats_b1": true,
+        "c_beats_b2": true,
+        "c_beats_all_baselines": true
+      },
+      {
+        "loss_to_cost_ratio": 8.0,
+        "crop_loss_eur": 2800.0,
+        "p_star": 0.125,
+        "mean_n_protected_c": 47.1,
+        "integer_protected_c_total": 2781,
+        "integer_damaged_c_total": 234,
+        "mean_exp_b1": 59778.81,
+        "mean_exp_b2": 83650.0,
+        "mean_exp_b3_m3": 42088.98,
+        "mean_exp_b4p_n128_m3": 50542.37,
+        "best_baseline_strategy": "B3(m=3)",
+        "best_baseline_exp_eur": 42088.98,
+        "c_k8_advantage_vs_best_eur": 14486.44,
+        "mean_exp_c_k8": 27602.54,
+        "c_beats_b1": true,
+        "c_beats_b2": true,
+        "c_beats_all_baselines": true
+      },
+      {
+        "loss_to_cost_ratio": 10.0,
+        "crop_loss_eur": 3500.0,
+        "p_star": 0.1,
+        "mean_n_protected_c": 50.6,
+        "integer_protected_c_total": 2983,
+        "integer_damaged_c_total": 215,
+        "mean_exp_b1": 73660.17,
+        "mean_exp_b2": 83650.0,
+        "mean_exp_b3_m3": 43750.0,
+        "mean_exp_b4p_n128_m3": 58432.2,
+        "best_baseline_strategy": "B3(m=3)",
+        "best_baseline_exp_eur": 43750.0,
+        "c_k8_advantage_vs_best_eur": 13300.0,
+        "mean_exp_c_k8": 30450.0,
+        "c_beats_b1": true,
+        "c_beats_b2": true,
+        "c_beats_all_baselines": true
+      },
+      {
+        "loss_to_cost_ratio": 12.86,
+        "crop_loss_eur": 4500.0,
+        "p_star": 0.0778,
+        "mean_n_protected_c": 54.4,
+        "integer_protected_c_total": 3207,
+        "integer_damaged_c_total": 188,
+        "mean_exp_b1": 93490.68,
+        "mean_exp_b2": 83650.0,
+        "mean_exp_b3_m3": 46122.88,
+        "mean_exp_b4p_n128_m3": 69703.39,
+        "best_baseline_strategy": "B3(m=3)",
+        "best_baseline_exp_eur": 46122.88,
+        "c_k8_advantage_vs_best_eur": 12759.32,
+        "mean_exp_c_k8": 33363.56,
+        "c_beats_b1": true,
+        "c_beats_b2": true,
+        "c_beats_all_baselines": true
+      },
+      {
+        "loss_to_cost_ratio": 15.0,
+        "crop_loss_eur": 5250.0,
+        "p_star": 0.0667,
+        "mean_n_protected_c": 56.7,
+        "integer_protected_c_total": 3348,
+        "integer_damaged_c_total": 172,
+        "mean_exp_b1": 108363.56,
+        "mean_exp_b2": 83650.0,
+        "mean_exp_b3_m3": 47902.54,
+        "mean_exp_b4p_n128_m3": 78156.78,
+        "best_baseline_strategy": "B3(m=3)",
+        "best_baseline_exp_eur": 47902.54,
+        "c_k8_advantage_vs_best_eur": 12736.44,
+        "mean_exp_c_k8": 35166.1,
+        "c_beats_b1": true,
+        "c_beats_b2": true,
+        "c_beats_all_baselines": true
+      },
+      {
+        "loss_to_cost_ratio": 20.0,
+        "crop_loss_eur": 7000.0,
+        "p_star": 0.05,
+        "mean_n_protected_c": 61.7,
+        "integer_protected_c_total": 3642,
+        "integer_damaged_c_total": 146,
+        "mean_exp_b1": 143066.95,
+        "mean_exp_b2": 83650.0,
+        "mean_exp_b3_m3": 52055.08,
+        "mean_exp_b4p_n128_m3": 97881.36,
+        "best_baseline_strategy": "B3(m=3)",
+        "best_baseline_exp_eur": 52055.08,
+        "c_k8_advantage_vs_best_eur": 13127.97,
+        "mean_exp_c_k8": 38927.12,
+        "c_beats_b1": true,
+        "c_beats_b2": true,
+        "c_beats_all_baselines": true
+      },
+      {
+        "loss_to_cost_ratio": 25.0,
+        "crop_loss_eur": 8750.0,
+        "p_star": 0.04,
+        "mean_n_protected_c": 65.3,
+        "integer_protected_c_total": 3854,
+        "integer_damaged_c_total": 128,
+        "mean_exp_b1": 177770.34,
+        "mean_exp_b2": 83650.0,
+        "mean_exp_b3_m3": 56207.63,
+        "mean_exp_b4p_n128_m3": 117605.93,
+        "best_baseline_strategy": "B3(m=3)",
+        "best_baseline_exp_eur": 56207.63,
+        "c_k8_advantage_vs_best_eur": 14361.86,
+        "mean_exp_c_k8": 41845.76,
+        "c_beats_b1": true,
+        "c_beats_b2": true,
+        "c_beats_all_baselines": true
+      },
+      {
+        "loss_to_cost_ratio": 30.0,
+        "crop_loss_eur": 10500.0,
+        "p_star": 0.0333,
+        "mean_n_protected_c": 68.3,
+        "integer_protected_c_total": 4032,
+        "integer_damaged_c_total": 113,
+        "mean_exp_b1": 212473.73,
+        "mean_exp_b2": 83650.0,
+        "mean_exp_b3_m3": 60360.17,
+        "mean_exp_b4p_n128_m3": 137330.51,
+        "best_baseline_strategy": "B3(m=3)",
+        "best_baseline_exp_eur": 60360.17,
+        "c_k8_advantage_vs_best_eur": 16331.36,
+        "mean_exp_c_k8": 44028.81,
+        "c_beats_b1": true,
+        "c_beats_b2": true,
+        "c_beats_all_baselines": true
+      }
+    ],
+    "climatological_frequency_reweighting": [
+      {
+        "scenario": "Synthetic Catalog Distribution",
+        "weights": {
+          "ordinary": 0.05084745762711865,
+          "inversion": 0.6271186440677966,
+          "no_frost": 0.3220338983050847
+        },
+        "inputs_per_type_per_night_eur": {
+          "ordinary": {
+            "B1": 83650.0,
+            "B2": 83650.0,
+            "B3_m3": 83650.0,
+            "B4_m3": 909900.0,
+            "B4p_N128_m3": 506800.0,
+            "C_k6": 83650.0,
+            "C_k8": 83650.0,
+            "B4p_m3": 506800.0
+          },
+          "inversion": {
+            "B1": 142297.3,
+            "B2": 83650.0,
+            "B3_m3": 66764.86,
+            "B4_m3": 95724.32,
+            "B4p_N128_m3": 70056.76,
+            "C_k6": 55750.0,
+            "C_k8": 46418.92,
+            "B4p_m3": 70056.76
+          },
+          "no_frost": {
+            "B1": 0.0,
+            "B2": 83650.0,
+            "B3_m3": 0.0,
+            "B4_m3": 0.0,
+            "B4p_N128_m3": 0.0,
+            "C_k6": 0.0,
+            "C_k8": 0.0,
+            "B4p_m3": 0.0
+          }
+        },
+        "inputs_mean_exp_by_type": {
+          "ordinary": {
+            "B1": 83650.0,
+            "B2": 83650.0,
+            "B3_m3": 83650.0,
+            "B4_m3": 909900.0,
+            "B4p_N128_m3": 506800.0,
+            "C_k6": 83650.0,
+            "C_k8": 83650.0,
+            "B4p_m3": 506800.0
+          },
+          "inversion": {
+            "B1": 142297.3,
+            "B2": 83650.0,
+            "B3_m3": 66764.86,
+            "B4_m3": 95724.32,
+            "B4p_N128_m3": 70056.76,
+            "C_k6": 55750.0,
+            "C_k8": 46418.92,
+            "B4p_m3": 70056.76
+          },
+          "no_frost": {
+            "B1": 0.0,
+            "B2": 83650.0,
+            "B3_m3": 0.0,
+            "B4_m3": 0.0,
+            "B4p_N128_m3": 0.0,
+            "C_k6": 0.0,
+            "C_k8": 0.0,
+            "B4p_m3": 0.0
+          }
+        },
+        "weighted_expenditure_eur": {
+          "B1": 93490.68,
+          "B2": 83650.0,
+          "B3_m3": 46122.88,
+          "B4_m3": 106296.61,
+          "B4p_N128_m3": 69703.39,
+          "C_k6": 39215.25,
+          "C_k8": 33363.56,
+          "B4p_m3": 69703.39
+        },
+        "weighted_expenditure": {
+          "B1": 93490.68,
+          "B2": 83650.0,
+          "B3_m3": 46122.88,
+          "B4_m3": 106296.61,
+          "B4p_N128_m3": 69703.39,
+          "C_k6": 39215.25,
+          "C_k8": 33363.56,
+          "B4p_m3": 69703.39
+        },
+        "c_k8_advantage_vs_b1": 60127.12,
+        "c_k8_advantage_vs_b2": 50286.44
+      },
+      {
+        "scenario": "Maritime Appellation (Frequent Radiation Frost)",
+        "weights": {
+          "ordinary": 0.15,
+          "inversion": 0.45,
+          "no_frost": 0.4
+        },
+        "inputs_per_type_per_night_eur": {
+          "ordinary": {
+            "B1": 83650.0,
+            "B2": 83650.0,
+            "B3_m3": 83650.0,
+            "B4_m3": 909900.0,
+            "B4p_N128_m3": 506800.0,
+            "C_k6": 83650.0,
+            "C_k8": 83650.0,
+            "B4p_m3": 506800.0
+          },
+          "inversion": {
+            "B1": 142297.3,
+            "B2": 83650.0,
+            "B3_m3": 66764.86,
+            "B4_m3": 95724.32,
+            "B4p_N128_m3": 70056.76,
+            "C_k6": 55750.0,
+            "C_k8": 46418.92,
+            "B4p_m3": 70056.76
+          },
+          "no_frost": {
+            "B1": 0.0,
+            "B2": 83650.0,
+            "B3_m3": 0.0,
+            "B4_m3": 0.0,
+            "B4p_N128_m3": 0.0,
+            "C_k6": 0.0,
+            "C_k8": 0.0,
+            "B4p_m3": 0.0
+          }
+        },
+        "inputs_mean_exp_by_type": {
+          "ordinary": {
+            "B1": 83650.0,
+            "B2": 83650.0,
+            "B3_m3": 83650.0,
+            "B4_m3": 909900.0,
+            "B4p_N128_m3": 506800.0,
+            "C_k6": 83650.0,
+            "C_k8": 83650.0,
+            "B4p_m3": 506800.0
+          },
+          "inversion": {
+            "B1": 142297.3,
+            "B2": 83650.0,
+            "B3_m3": 66764.86,
+            "B4_m3": 95724.32,
+            "B4p_N128_m3": 70056.76,
+            "C_k6": 55750.0,
+            "C_k8": 46418.92,
+            "B4p_m3": 70056.76
+          },
+          "no_frost": {
+            "B1": 0.0,
+            "B2": 83650.0,
+            "B3_m3": 0.0,
+            "B4_m3": 0.0,
+            "B4p_N128_m3": 0.0,
+            "C_k6": 0.0,
+            "C_k8": 0.0,
+            "B4p_m3": 0.0
+          }
+        },
+        "weighted_expenditure_eur": {
+          "B1": 76581.29,
+          "B2": 83650.0,
+          "B3_m3": 42591.69,
+          "B4_m3": 179560.94,
+          "B4p_N128_m3": 107545.54,
+          "C_k6": 37635.0,
+          "C_k8": 33436.01,
+          "B4p_m3": 107545.54
+        },
+        "weighted_expenditure": {
+          "B1": 76581.29,
+          "B2": 83650.0,
+          "B3_m3": 42591.69,
+          "B4_m3": 179560.94,
+          "B4p_N128_m3": 107545.54,
+          "C_k6": 37635.0,
+          "C_k8": 33436.01,
+          "B4p_m3": 107545.54
+        },
+        "c_k8_advantage_vs_b1": 43145.28,
+        "c_k8_advantage_vs_b2": 50213.99
+      },
+      {
+        "scenario": "Continental Valley (Severe Inversions)",
+        "weights": {
+          "ordinary": 0.25,
+          "inversion": 0.5,
+          "no_frost": 0.25
+        },
+        "inputs_per_type_per_night_eur": {
+          "ordinary": {
+            "B1": 83650.0,
+            "B2": 83650.0,
+            "B3_m3": 83650.0,
+            "B4_m3": 909900.0,
+            "B4p_N128_m3": 506800.0,
+            "C_k6": 83650.0,
+            "C_k8": 83650.0,
+            "B4p_m3": 506800.0
+          },
+          "inversion": {
+            "B1": 142297.3,
+            "B2": 83650.0,
+            "B3_m3": 66764.86,
+            "B4_m3": 95724.32,
+            "B4p_N128_m3": 70056.76,
+            "C_k6": 55750.0,
+            "C_k8": 46418.92,
+            "B4p_m3": 70056.76
+          },
+          "no_frost": {
+            "B1": 0.0,
+            "B2": 83650.0,
+            "B3_m3": 0.0,
+            "B4_m3": 0.0,
+            "B4p_N128_m3": 0.0,
+            "C_k6": 0.0,
+            "C_k8": 0.0,
+            "B4p_m3": 0.0
+          }
+        },
+        "inputs_mean_exp_by_type": {
+          "ordinary": {
+            "B1": 83650.0,
+            "B2": 83650.0,
+            "B3_m3": 83650.0,
+            "B4_m3": 909900.0,
+            "B4p_N128_m3": 506800.0,
+            "C_k6": 83650.0,
+            "C_k8": 83650.0,
+            "B4p_m3": 506800.0
+          },
+          "inversion": {
+            "B1": 142297.3,
+            "B2": 83650.0,
+            "B3_m3": 66764.86,
+            "B4_m3": 95724.32,
+            "B4p_N128_m3": 70056.76,
+            "C_k6": 55750.0,
+            "C_k8": 46418.92,
+            "B4p_m3": 70056.76
+          },
+          "no_frost": {
+            "B1": 0.0,
+            "B2": 83650.0,
+            "B3_m3": 0.0,
+            "B4_m3": 0.0,
+            "B4p_N128_m3": 0.0,
+            "C_k6": 0.0,
+            "C_k8": 0.0,
+            "B4p_m3": 0.0
+          }
+        },
+        "weighted_expenditure_eur": {
+          "B1": 92061.15,
+          "B2": 83650.0,
+          "B3_m3": 54294.93,
+          "B4_m3": 275337.16,
+          "B4p_N128_m3": 161728.38,
+          "C_k6": 48787.5,
+          "C_k8": 44121.96,
+          "B4p_m3": 161728.38
+        },
+        "weighted_expenditure": {
+          "B1": 92061.15,
+          "B2": 83650.0,
+          "B3_m3": 54294.93,
+          "B4_m3": 275337.16,
+          "B4p_N128_m3": 161728.38,
+          "C_k6": 48787.5,
+          "C_k8": 44121.96,
+          "B4p_m3": 161728.38
+        },
+        "c_k8_advantage_vs_b1": 47939.19,
+        "c_k8_advantage_vs_b2": 39528.04
+      },
+      {
+        "scenario": "Mild Maritime Spring",
+        "weights": {
+          "ordinary": 0.02,
+          "inversion": 0.18,
+          "no_frost": 0.8
+        },
+        "inputs_per_type_per_night_eur": {
+          "ordinary": {
+            "B1": 83650.0,
+            "B2": 83650.0,
+            "B3_m3": 83650.0,
+            "B4_m3": 909900.0,
+            "B4p_N128_m3": 506800.0,
+            "C_k6": 83650.0,
+            "C_k8": 83650.0,
+            "B4p_m3": 506800.0
+          },
+          "inversion": {
+            "B1": 142297.3,
+            "B2": 83650.0,
+            "B3_m3": 66764.86,
+            "B4_m3": 95724.32,
+            "B4p_N128_m3": 70056.76,
+            "C_k6": 55750.0,
+            "C_k8": 46418.92,
+            "B4p_m3": 70056.76
+          },
+          "no_frost": {
+            "B1": 0.0,
+            "B2": 83650.0,
+            "B3_m3": 0.0,
+            "B4_m3": 0.0,
+            "B4p_N128_m3": 0.0,
+            "C_k6": 0.0,
+            "C_k8": 0.0,
+            "B4p_m3": 0.0
+          }
+        },
+        "inputs_mean_exp_by_type": {
+          "ordinary": {
+            "B1": 83650.0,
+            "B2": 83650.0,
+            "B3_m3": 83650.0,
+            "B4_m3": 909900.0,
+            "B4p_N128_m3": 506800.0,
+            "C_k6": 83650.0,
+            "C_k8": 83650.0,
+            "B4p_m3": 506800.0
+          },
+          "inversion": {
+            "B1": 142297.3,
+            "B2": 83650.0,
+            "B3_m3": 66764.86,
+            "B4_m3": 95724.32,
+            "B4p_N128_m3": 70056.76,
+            "C_k6": 55750.0,
+            "C_k8": 46418.92,
+            "B4p_m3": 70056.76
+          },
+          "no_frost": {
+            "B1": 0.0,
+            "B2": 83650.0,
+            "B3_m3": 0.0,
+            "B4_m3": 0.0,
+            "B4p_N128_m3": 0.0,
+            "C_k6": 0.0,
+            "C_k8": 0.0,
+            "B4p_m3": 0.0
+          }
+        },
+        "weighted_expenditure_eur": {
+          "B1": 27286.51,
+          "B2": 83650.0,
+          "B3_m3": 13690.67,
+          "B4_m3": 35428.38,
+          "B4p_N128_m3": 22746.22,
+          "C_k6": 11708.0,
+          "C_k8": 10028.41,
+          "B4p_m3": 22746.22
+        },
+        "weighted_expenditure": {
+          "B1": 27286.51,
+          "B2": 83650.0,
+          "B3_m3": 13690.67,
+          "B4_m3": 35428.38,
+          "B4p_N128_m3": 22746.22,
+          "C_k6": 11708.0,
+          "C_k8": 10028.41,
+          "B4p_m3": 22746.22
+        },
+        "c_k8_advantage_vs_b1": 17258.1,
+        "c_k8_advantage_vs_b2": 73621.59
+      }
+    ],
+    "b4_prime_sweep": [
+      {
+        "N_parcels": 54,
+        "margin_m_c": 2.0,
+        "total_protected_59_nights": 540,
+        "mean_protected_per_night": 9.15,
+        "TP": 450,
+        "FN": 1393,
+        "FP": 90,
+        "recall_pooled": 0.2442,
+        "total_cost_eur": 6457500.0,
+        "mean_cost_per_night_eur": 109449.15
+      },
+      {
+        "N_parcels": 54,
+        "margin_m_c": 3.0,
+        "total_protected_59_nights": 1350,
+        "mean_protected_per_night": 22.88,
+        "TP": 796,
+        "FN": 1047,
+        "FP": 554,
+        "recall_pooled": 0.4319,
+        "total_cost_eur": 5184000.0,
+        "mean_cost_per_night_eur": 87864.41
+      },
+      {
+        "N_parcels": 54,
+        "margin_m_c": 4.0,
+        "total_protected_59_nights": 2160,
+        "mean_protected_per_night": 36.61,
+        "TP": 936,
+        "FN": 907,
+        "FP": 1224,
+        "recall_pooled": 0.5079,
+        "total_cost_eur": 4837500.0,
+        "mean_cost_per_night_eur": 81991.53
+      },
+      {
+        "N_parcels": 90,
+        "margin_m_c": 2.0,
+        "total_protected_59_nights": 900,
+        "mean_protected_per_night": 15.25,
+        "TP": 629,
+        "FN": 1214,
+        "FP": 271,
+        "recall_pooled": 0.3413,
+        "total_cost_eur": 5778000.0,
+        "mean_cost_per_night_eur": 97932.2
+      },
+      {
+        "N_parcels": 90,
+        "margin_m_c": 3.0,
+        "total_protected_59_nights": 2250,
+        "mean_protected_per_night": 38.14,
+        "TP": 1011,
+        "FN": 832,
+        "FP": 1239,
+        "recall_pooled": 0.5486,
+        "total_cost_eur": 4531500.0,
+        "mean_cost_per_night_eur": 76805.08
+      },
+      {
+        "N_parcels": 90,
+        "margin_m_c": 4.0,
+        "total_protected_59_nights": 3600,
+        "mean_protected_per_night": 61.02,
+        "TP": 1151,
+        "FN": 692,
+        "FP": 2449,
+        "recall_pooled": 0.6245,
+        "total_cost_eur": 4374000.0,
+        "mean_cost_per_night_eur": 74135.59
+      },
+      {
+        "N_parcels": 128,
+        "margin_m_c": 2.0,
+        "total_protected_59_nights": 1280,
+        "mean_protected_per_night": 21.69,
+        "TP": 788,
+        "FN": 1055,
+        "FP": 492,
+        "recall_pooled": 0.4276,
+        "total_cost_eur": 5195500.0,
+        "mean_cost_per_night_eur": 88059.32
+      },
+      {
+        "N_parcels": 128,
+        "margin_m_c": 3.0,
+        "total_protected_59_nights": 3200,
+        "mean_protected_per_night": 54.24,
+        "TP": 1178,
+        "FN": 665,
+        "FP": 2022,
+        "recall_pooled": 0.6392,
+        "total_cost_eur": 4112500.0,
+        "mean_cost_per_night_eur": 69703.39
+      },
+      {
+        "N_parcels": 128,
+        "margin_m_c": 4.0,
+        "total_protected_59_nights": 5120,
+        "mean_protected_per_night": 86.78,
+        "TP": 1318,
+        "FN": 525,
+        "FP": 3802,
+        "recall_pooled": 0.7151,
+        "total_cost_eur": 4154500.0,
+        "mean_cost_per_night_eur": 70415.25
+      },
+      {
+        "N_parcels": 160,
+        "margin_m_c": 2.0,
+        "total_protected_59_nights": 1600,
+        "mean_protected_per_night": 27.12,
+        "TP": 948,
+        "FN": 895,
+        "FP": 652,
+        "recall_pooled": 0.5144,
+        "total_cost_eur": 4587500.0,
+        "mean_cost_per_night_eur": 77754.24
+      },
+      {
+        "N_parcels": 160,
+        "margin_m_c": 3.0,
+        "total_protected_59_nights": 4000,
+        "mean_protected_per_night": 67.8,
+        "TP": 1384,
+        "FN": 459,
+        "FP": 2616,
+        "recall_pooled": 0.7509,
+        "total_cost_eur": 3465500.0,
+        "mean_cost_per_night_eur": 58737.29
+      },
+      {
+        "N_parcels": 160,
+        "margin_m_c": 4.0,
+        "total_protected_59_nights": 6400,
+        "mean_protected_per_night": 108.47,
+        "TP": 1524,
+        "FN": 319,
+        "FP": 4876,
+        "recall_pooled": 0.8269,
+        "total_cost_eur": 3675500.0,
+        "mean_cost_per_night_eur": 62296.61
+      }
+    ]
+  },
+  "denominators_and_reconciliation": {
+    "multiples_of_one_ninth_explanation": "In Phase 3c, the training-night subset evaluation iterated over training_nights[:20] (nights 002-021). Within that slice, nights 002-020 have 0 frozen parcels, and exactly 9 subsequent inversion nights in the first half of the catalog contain frozen pocket parcels. Because the denominator of nights with frozen pocket parcels was exactly n=9, taking the mean produced exact multiples of 1/9 (1/9 = 11.1%, 4/9 = 44.4%). Across the full 59 training nights, exactly n=40 nights experience valley pocket frost.",
+    "n_nights_pocket_frost": 40,
+    "n_nights_inversion_frost": 37,
+    "n_nights_ordinary_frost": 3,
+    "n_frost_training_nights": 40
+  },
+  "out_of_sample_split_placement": {
+    "split_a_train_002_030_eval_031_060": {
+      "random_baseline": {
+        "rec_pstar": 0.6723
+      }
+    },
+    "split_b_train_031_060_eval_002_030": {
+      "random_baseline": {
+        "rec_pstar": 0.393
+      }
+    },
+    "explanation_of_difference": "Split A evaluated on nights 031-060 (30 frost nights, 1,750 frozen parcel-nights) achieves high recall because frost events are frequent and widespread. Split B evaluated on nights 002-030 (only 10 mild frost nights, 93 frozen parcel-nights, 19 zero-frost nights) has fewer opportunities for detection, resulting in lower aggregate recall. Both models detect frost when present."
+  },
+  "model_selection_and_baselines": {
+    "gp_b_farm_default": {
+      "name": "Universal Kriging GP (Farm Calibration b \u2014 Default)",
+      "overall_rmse": 0.975,
+      "cov90_pct": 90.0,
+      "rec_p_star": 0.835,
+      "macro_rec_p_star": 0.562,
+      "paired_delta_rmse_vs_gp_b": 0.0
+    },
+    "gp_a_dense_sensitivity": {
+      "name": "Universal Kriging GP (Dense Survey a \u2014 Sensitivity)",
+      "overall_rmse": 1.019,
+      "cov90_pct": 89.2,
+      "rec_p_star": 0.848,
+      "macro_rec_p_star": 0.614,
+      "paired_delta_rmse_vs_gp_b": 0.044
+    },
+    "gp_oracle_sensitivity": {
+      "name": "Universal Kriging GP (Oracle Generator-Matched \u2014 Sensitivity)",
+      "overall_rmse": 0.975,
+      "cov90_pct": 95.8,
+      "rec_p_star": 0.931,
+      "macro_rec_p_star": 0.78,
+      "paired_delta_rmse_vs_gp_b": 0.0
+    },
+    "terrain_linear": {
+      "name": "Terrain Linear Baseline",
+      "overall_rmse": 0.987,
+      "cov90_pct": 64.4,
+      "rec_p_star": 0.21,
+      "paired_delta_rmse_vs_gp_b": 0.012
+    },
+    "terrain_gp": {
+      "name": "Terrain-Only GP",
+      "overall_rmse": 1.018,
+      "cov90_pct": 47.7,
+      "rec_p_star": 0.19,
+      "paired_delta_rmse_vs_gp_b": 0.043
+    },
+    "idw": {
+      "name": "Inverse Distance Weighting (IDW)",
+      "overall_rmse": 1.093,
+      "cov90_pct": 75.8,
+      "rec_p_star": 0.19,
+      "paired_delta_rmse_vs_gp_b": 0.118
+    },
+    "nearest": {
+      "name": "Nearest Sensor Baseline",
+      "overall_rmse": 1.156,
+      "cov90_pct": 79.3,
+      "rec_p_star": 0.289,
+      "paired_delta_rmse_vs_gp_b": 0.181
+    }
+  },
+  "benchmarks": {
+    "gp_b_farm_default": {
+      "name": "Universal Kriging GP (Farm Calibration b \u2014 Default)",
+      "overall_rmse": 0.975,
+      "cov90_pct": 90.0,
+      "rec_p_star": 0.835
+    },
+    "terrain_linear": {
+      "name": "Terrain Linear Baseline",
+      "overall_rmse": 0.987,
+      "cov90_pct": 64.4,
+      "rec_p_star": 0.21
+    },
+    "terrain_gp": {
+      "name": "Terrain-Only GP",
+      "overall_rmse": 1.018,
+      "cov90_pct": 47.7,
+      "rec_p_star": 0.19
+    },
+    "idw": {
+      "name": "Inverse Distance Weighting (IDW)",
+      "overall_rmse": 1.093,
+      "cov90_pct": 75.8,
+      "rec_p_star": 0.19
+    },
+    "nearest": {
+      "name": "Nearest Sensor Baseline",
+      "overall_rmse": 1.156,
+      "cov90_pct": 79.3,
+      "rec_p_star": 0.289
+    }
+  },
+  "item_5_baselines_benchmark": {
+    "gp_b_farm_default": {
+      "overall_rmse": 0.975,
+      "cov90_pct": 90.0,
+      "rec_p_star": 0.835
+    },
+    "terrain_linear": {
+      "overall_rmse": 0.987,
+      "cov90_pct": 64.4,
+      "rec_p_star": 0.21
+    },
+    "terrain_gp": {
+      "overall_rmse": 1.018,
+      "cov90_pct": 47.7,
+      "rec_p_star": 0.19
+    },
+    "idw": {
+      "overall_rmse": 1.093,
+      "cov90_pct": 75.8,
+      "rec_p_star": 0.19
+    },
+    "nearest": {
+      "overall_rmse": 1.156,
+      "cov90_pct": 79.3,
+      "rec_p_star": 0.289
+    }
+  },
+  "headline_analysis": {
+    "TP": 35,
+    "FN": 14,
+    "FP": 50,
+    "TN": 140,
+    "frozen": 49,
+    "protected": 85,
+    "recall_pstar": 0.7143,
+    "precision": 0.4118,
+    "protection_cost": 29750.0,
+    "crop_loss": 63000.0,
+    "false_alarm_cost": 17500.0,
+    "total_expenditure": 92750.0
+  },
+  "item_6_headline_analysis": {
+    "TP": 35,
+    "FN": 14,
+    "FP": 50,
+    "TN": 140,
+    "frozen": 49,
+    "protected": 85,
+    "recall_pstar": 0.7143,
+    "precision": 0.4118,
+    "protection_cost": 29750.0,
+    "crop_loss": 63000.0,
+    "false_alarm_cost": 17500.0,
+    "total_expenditure": 92750.0
+  },
+  "hero_diagnostics": {
+    "all_frozen": {
+      "n": 49,
+      "rec_05": 0.0,
+      "rec_02": 0.1224,
+      "rec_p_star": 0.551,
+      "TP": 27,
+      "FN": 22,
+      "FP": 22,
+      "TN": 168,
+      "protected": 49
+    },
+    "pocket": {
+      "n": 21,
+      "rec_05": 0.0,
+      "rec_02": 0.1905,
+      "rec_p_star": 0.7143
+    },
+    "hollow": {
+      "n": 28,
+      "rec_05": 0.0,
+      "rec_02": 0.0714,
+      "rec_p_star": 0.4286
+    }
+  },
+  "item_1_hero_diagnostic": {
+    "all_frozen": {
+      "n": 49,
+      "rec_05": 0.0,
+      "rec_02": 0.1224,
+      "rec_p_star": 0.551,
+      "TP": 27,
+      "FN": 22,
+      "FP": 22,
+      "TN": 168,
+      "protected": 49
+    },
+    "pocket": {
+      "n": 21,
+      "rec_05": 0.0,
+      "rec_02": 0.1905,
+      "rec_p_star": 0.7143
+    },
+    "hollow": {
+      "n": 28,
+      "rec_05": 0.0,
+      "rec_02": 0.0714,
+      "rec_p_star": 0.4286
+    }
+  },
+  "sigma_recalibration": {
+    "active_s_multiplier": 1.855,
+    "split_1_train_h1_test_h2": {
+      "test_coverage_before": 61.9,
+      "test_coverage_after": 73.5,
+      "test_brier_before": 0.0573,
+      "test_brier_after": 0.0463
+    },
+    "split_2_train_h2_test_h1": {
+      "test_coverage_before": 81.0,
+      "test_coverage_after": 98.3,
+      "test_brier_before": 0.0075,
+      "test_brier_after": 0.0048
+    },
+    "pooled_catalog_calibration": {
+      "coverage_before": 71.2,
+      "coverage_after": 90.0,
+      "brier_before": 0.032,
+      "brier_after": 0.025
+    }
+  },
+  "phase_3c": {
+    "decision_focused_vs_rules_training_nights": {
+      "decision_focused": {
+        "add_1": {
+          "rec05": 0.284
+        },
+        "add_2": {
+          "rec05": 0.284
+        },
+        "add_3": {
+          "rec05": 0.284
+        }
+      },
+      "max_variance": {
+        "add_1": {
+          "rec05": 0.266
+        },
+        "add_2": {
+          "rec05": 0.266
+        },
+        "add_3": {
+          "rec05": 0.266
+        }
+      },
+      "random": {
+        "add_1": {
+          "rec05": 0.164
+        },
+        "add_2": {
+          "rec05": 0.148
+        },
+        "add_3": {
+          "rec05": 0.151
+        }
+      }
+    }
+  }
+}
