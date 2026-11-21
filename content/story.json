@@ -1,0 +1,84 @@
+{
+  "title": "Cassini Vivant",
+  "tagline": "La triangulation du terroir, en temps réel",
+  "disclaimer": "All historical and financial context facts are marked with needs_verification until confirmed.",
+  "cards": [
+    {
+      "id": "cassini_1747",
+      "title_en": "1747: The Cassini Triangulation",
+      "title_fr": "1747 : La Triangulation de Cassini",
+      "body_en": "In 1747, César-François Cassini de Thury undertook the first topographic map of France. Rather than measuring every single foot of the realm, cartographers established fixed geodetic reference points—frequently using church bell towers—built a triangulation network, and derived everything in between with mathematical rigor.",
+      "body_fr": "En 1747, César-François Cassini de Thury entreprend la première carte topographique de la France. Au lieu de mesurer chaque mètre du royaume, les géomètres ont fixé des points géodésiques précis—souvent les clochers d'églises—ont tissé un réseau de triangulation, et ont déduit mathématiquement l'espace intermédiaire.",
+      "needs_verification": true
+    },
+    {
+      "id": "the_method",
+      "title_en": "The Principle: Sparse Points, Continuous Truth",
+      "title_fr": "Le Principe : Points rares, Vérité continue",
+      "body_en": "Viticulture microclimates (especially frost pooling and heat sum) vary plot by plot, yet regional weather forecasts only provide macro-averages. By combining a small number of existing physical weather stations with physical terrain elevation and Gaussian Process kriging, we reconstruct hyper-local microclimate risk for every parcel with quantified uncertainty.",
+      "body_fr": "Le microclimat viticole (notamment le gel et l'accumulation thermique) varie parcelle par parcelle, alors que les prévisions régionales ne fournissent que des moyennes macroscopiques. En combinant un petit nombre de stations existantes avec le relief physique et le krigeage par Processus Gaussien, nous reconstituons le risque microclimatique parcelle par parcelle avec incertitude quantifiée.",
+      "needs_verification": true
+    },
+    {
+      "id": "cassini_vivant",
+      "title_en": "Cassini Vivant: Software-First Terroir Intelligence",
+      "title_fr": "Cassini Vivant : L'intelligence logicielle du terroir",
+      "body_en": "Cassini Vivant requires zero proprietary hardware. Growers upload existing weather station data (CSV) or connect existing local probes. The system delivers microclimate risk, guides strategic frost fighting to save thousands of euros per night, pinpoints optimal new sensor placements, and assists with appellation adaptation dossiers.",
+      "body_fr": "Cassini Vivant n'exige aucun matériel propriétaire. Les viticulteurs importent leurs stations existantes (CSV) ou connectent leurs sondes. Le système estime le risque microclimatique, cible la lutte antigel pour économiser des milliers d'euros par nuit, identifie l'emplacement optimal des futures sondes, et prépare les dossiers d'adaptation ODG.",
+      "needs_verification": true
+    },
+    {
+      "id": "richardson_cost_loss",
+      "title_en": "Cost-Loss Decision Theory (Richardson, 2000)",
+      "title_fr": "Théorie de la Décision Coût-Perte (Richardson, 2000)",
+      "body_en": "Under meteorological cost-loss decision theory (Richardson, 2000: 'Skill and relative economic value of the ECMWF ensemble prediction system'), targeted intervention is economically optimal whenever probabilistic event risk exceeds the cost-loss ratio p* = Cost / Loss. On synthetic nights where regional temperature remains above 0°C, blanket rules fail while localized risk assessment targets protection to high-loss parcels.",
+      "body_fr": "Selon la théorie météorologique de décision coût-perte (Richardson, 2000), l'intervention ciblée est optimale dès que le risque probabiliste dépasse le ratio coût-perte p* = Coût / Perte. Lors des nuits à inversion où la température régionale reste positive, les règles d'alerte globale échouent tandis que l'évaluation locale cible la protection là où les pertes sont évitables.",
+      "needs_verification": true
+    }
+  ],
+  "why_different": {
+    "title_en": "Why We Are Different: Learning from Failed AgTech",
+    "title_fr": "Pourquoi nous sommes différents : La leçon des échecs AgTech",
+    "context_en": "In 2025, French vineyard robotics pioneer Naïo Technologies entered receivership and was restructured under new ownership. The agtech sector has seen repeated failures driven by a fundamental 'cost-adoption mismatch': high capital expenditure, complex mechanical maintenance, unproven economic returns during wine market downturns, and demanding changes to established grower practices.",
+    "context_fr": "En 2025, le pionnier français de la robotique viticole Naïo Technologies a été placé en redressement judiciaire puis restructuré. Le secteur agtech a connu des difficultés répétées dues à une inéquation fondamentale coût-adoption : investissement initial lourd, maintenance mécanique complexe, retour sur investissement incertain en période de crise viticole, et bouleversement des pratiques culturales.",
+    "needs_verification": true,
+    "comparison_table": [
+      {
+        "dimension_en": "Capital Expenditure",
+        "dimension_fr": "Investissement matériel",
+        "hardware_robotics_en": "High (€30k–€150k+ per machine) with mechanical depreciation and upkeep.",
+        "hardware_robotics_fr": "Élevé (30 k€ à 150 k€+ par robot) avec dépréciation et entretien mécanique.",
+        "cassini_vivant_en": "Zero mandatory hardware. Uses standard CSV stations already in the vineyard.",
+        "cassini_vivant_fr": "Zéro matériel imposé. Utilise les stations météo déjà en place via import CSV.",
+        "needs_verification": true
+      },
+      {
+        "dimension_en": "Operational Disruption",
+        "dimension_fr": "Impact sur le travail",
+        "hardware_robotics_en": "Requires altering row spacing, soil management, and tractor habits.",
+        "hardware_robotics_fr": "Nécessite d'adapter la largeur des rangs, les sols et les habitudes de travail.",
+        "cassini_vivant_en": "Zero practice change. Seamless decision support for existing frost protection equipment.",
+        "cassini_vivant_fr": "Zéro changement de pratique. Aide à la décision immédiate pour les moyens de lutte existants.",
+        "needs_verification": true
+      },
+      {
+        "dimension_en": "Visible ROI",
+        "dimension_fr": "Retour sur investissement visible",
+        "hardware_robotics_en": "Payback period spans years; sensitive to labor availability and machinery downtime.",
+        "hardware_robotics_fr": "Amortissement sur plusieurs années ; sensible aux pannes et au coût de la main-d'œuvre.",
+        "cassini_vivant_en": "Immediate in a single frost night (targeted candles/turbines save €800–€3,000/ha).",
+        "cassini_vivant_fr": "Immédiat dès la première nuit de gel (ciblage des bougies/tours antigel économisant 800 à 3 000 €/ha).",
+        "needs_verification": true
+      },
+      {
+        "dimension_en": "Commercial Distribution",
+        "dimension_fr": "Modèle de distribution",
+        "hardware_robotics_en": "Direct sale to individual estates; hard to scale in small-holder regions.",
+        "hardware_robotics_fr": "Vente directe aux domaines individuels ; difficile d'accès pour les petites exploitations.",
+        "cassini_vivant_en": "Per-parcel SaaS or cooperative-wide licensing (ODG, cave coopérative, appellation).",
+        "cassini_vivant_fr": "Abonnement SaaS à la parcelle ou licence pour caves coopératives et ODG.",
+        "needs_verification": true
+      }
+    ]
+  }
+}
