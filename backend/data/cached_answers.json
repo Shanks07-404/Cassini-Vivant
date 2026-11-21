@@ -1,0 +1,172 @@
+{
+  "metadata": {
+    "source_file": "backend/data/eval.json",
+    "source_git_commit": "fcd9492c",
+    "generated_by": "backend/scripts/generate_cached_answers.py",
+    "canonical_p_star": 0.0778,
+    "active_sigma_inflation": 1.855
+  },
+  "answers": [
+    {
+      "id": "hero_night_diagnostic",
+      "keywords": [
+        "hero",
+        "night_001",
+        "diagnostic",
+        "001",
+        "inversion",
+        "miss",
+        "what happened"
+      ],
+      "question": "What happened on the hero night (night_001) and why did regional alerts fail?",
+      "answer": "On the hero showcase night (night_001), synoptic regional forecast temperature was +2.4°C (well above freezing). Under Strategy B1 (Standard Regional Alert), 0 parcels were protected, leaving all 49 freezing parcels unprotected and resulting in a total crop loss of €220,500.00 (49 parcels × €4,500). The baseline 6-station network (located on ridges and mid-slopes) predicted temperatures above freezing, achieving 0.0% recall at p>0.5. However, at the calibrated economic action threshold p* = C/L = 7.78% (with calibrated predictive sigma), baseline K=6 caught 55.1% of frozen parcels. Adding decision-focused valley floor stations (P050 and P202) raised hero night recall to 71.4%, successfully catching deep drainage cold pooling.",
+      "citations": [
+        {
+          "doc_id": "DEMO-FROST-PROTECTION",
+          "section": "3.2",
+          "title": "Limitations of Regional Forecasts During Inversion Nights"
+        },
+        {
+          "doc_id": "DEMO-APPELLATION-RULES",
+          "section": "1.3",
+          "title": "Collective Resource Sharing & Priority Parcels"
+        }
+      ]
+    },
+    {
+      "id": "sensor_placement_roi",
+      "keywords": [
+        "roi",
+        "sensor",
+        "k=8",
+        "k=6",
+        "benefit",
+        "sensors",
+        "placement",
+        "cost"
+      ],
+      "question": "What is the ROI and economic benefit of adding decision-focused sensors (K=8 vs K=6)?",
+      "answer": "Across all 59 training nights, moving from the default K=6 network to K=8 (+P050 and +P202) increases mean frost recall from 83.5% to 89.8% at the optimal threshold p* = 7.78%. In financial terms, K=8 reduces average seasonal expenditure from €39,215.25/night (total €2,313,700.00) to €33,363.56/night (total €1,968,450.00), generating a net saving of €5,851.69 per night (€345,250.00 over the season). Compared to standard regional alert (Strategy B1 at €93,490.68/night), Strategy C(K=8) delivers net savings of €60,127.12 per night (total €3,547,500.00 across the season).",
+      "citations": [
+        {
+          "doc_id": "DEMO-FROST-PROTECTION",
+          "section": "3.1",
+          "title": "Optimal Cost-Loss Decision Rule"
+        },
+        {
+          "doc_id": "DEMO-FROST-PROTECTION",
+          "section": "3.3",
+          "title": "Sensor Network Optimization"
+        }
+      ]
+    },
+    {
+      "id": "strategy_comparison",
+      "keywords": [
+        "compare",
+        "strategy",
+        "strategies",
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "blanket",
+        "regional"
+      ],
+      "question": "How does Cassini Vivant compare against benchmark strategies B1, B2, B3, and B4?",
+      "answer": "Across the 59 training nights, average per-night expenditures are:\n• Strategy A (Protect Nothing): €140,567.80/night (1,843 damaged parcel-nights)\n• Strategy B1 (Regional Alert): €93,490.68/night (€5,515,950.00 total; blind to 37 radiation inversion nights, losing 1170 parcels)\n• Strategy B2 (Blanket Protection): €83,650.00/night (€4,935,350.00 total; 0 frost damage, but 14,101 protected parcel-nights with high operational expense)\n• Strategy B3 (Margin Rule m=3°C): €46,122.88/night\n• Strategy B4 (DEM Cold Pooling m=3°C): €106,296.61/night\n• Strategy B4' (Volume-Matched DEM Parcels m=3°C): €69,703.39/night\n• Strategy C (Cassini Vivant K=6): €39,215.25/night\n• Strategy C (Cassini Vivant K=8): €33,363.56/night (optimal economic trade-off, catching 89.8% of frost events at p*).",
+      "citations": [
+        {
+          "doc_id": "DEMO-FROST-PROTECTION",
+          "section": "3.1",
+          "title": "Optimal Cost-Loss Decision Rule"
+        },
+        {
+          "doc_id": "DEMO-APPELLATION-RULES",
+          "section": "1.2",
+          "title": "Activation Window & Phenological Stages"
+        }
+      ]
+    },
+    {
+      "id": "environmental_regulations",
+      "keywords": [
+        "aspersion",
+        "water",
+        "bougies",
+        "environment",
+        "candle",
+        "dreal",
+        "inao",
+        "regulations",
+        "smoke"
+      ],
+      "question": "What are the illustrative guidance and environmental considerations for water aspersion and candles?",
+      "answer": "Under illustrative demo guidelines and agronomic practices [needs_verification]:\n1. Water Aspersion (§ 1.1): Latent heat release maintains bud temperature near 0°C during freezing. Water availability may be subject to local environmental extraction limits during low-flow spring periods [needs_verification]. Operators typically use dedicated storage reservoirs when direct river withdrawal is constrained [needs_verification].\n2. Candles & Heaters (§ 1.1): Combustion of wax or paraffin pots provides convective and radiant heating between vine rows. Deployments must consider air quality, smoke dispersion near transport axes, and collection of used containers [needs_verification].\n3. Operational Traceability (§ 1.4): All activations should be logged in operational farm registers with start/end times and resource usage.",
+      "citations": [
+        {
+          "doc_id": "DEMO-APPELLATION-RULES",
+          "section": "1.1",
+          "title": "Authorized Active Frost Protection Methods"
+        },
+        {
+          "doc_id": "DEMO-APPELLATION-RULES",
+          "section": "1.4",
+          "title": "Reporting & Traceability"
+        },
+        {
+          "doc_id": "adaptation_mechanisms",
+          "section": "Section",
+          "title": "Sprinkler Irrigation & Candles"
+        }
+      ]
+    },
+    {
+      "id": "uncertainty_and_calibration",
+      "keywords": [
+        "calibration",
+        "sigma",
+        "inflation",
+        "uncertainty",
+        "coverage",
+        "brier",
+        "1.855"
+      ],
+      "question": "Why is predictive uncertainty calibration required and how was it assessed?",
+      "answer": "Universal Kriging with linear elevation lapse assumes stationary residual variance. In complex terrain, katabatic drainage creates steep non-linear cold pools that raw GP variances underestimate. A predictive sigma calibration was fitted on training folds to improve nominal prediction interval coverage (pooled coverage: 90.0%, Brier score: 0.025). Without calibration, p_frost tail probabilities are underestimated, leading growers to miss frost events at the cost-loss action threshold p* = 7.78%.",
+      "citations": [
+        {
+          "doc_id": "MODEL-CARD",
+          "section": "1",
+          "title": "Model Architecture & Calibration"
+        }
+      ]
+    },
+    {
+      "id": "dem_b4_strategy",
+      "keywords": [
+        "b4",
+        "dem",
+        "pooling",
+        "24",
+        "pocket",
+        "rule",
+        "local knowledge"
+      ],
+      "question": "How is Strategy B4 (DEM cold pooling) defined and what are its limitations?",
+      "answer": "Strategy B4 represents a grower's topographic heuristic: when regional forecast temperature drops below a margin threshold (e.g. m=3.0°C), protect all 24 parcels identified as DEM frost pockets. On the hero showcase night, B4 triggers and protects 24 parcels, catching 21 frost pocket parcels (TP=21), but missing 28 hollow parcels (FN=28) that froze outside the DEM boundary. Across 59 training nights, B4 achieves a mean expenditure of €106,296.61/night. Volume-matched variant B4' scales protection to match Strategy C's intervention volume.",
+      "citations": [
+        {
+          "doc_id": "DEMO-FROST-PROTECTION",
+          "section": "3.2",
+          "title": "Limitations of Regional Forecasts During Inversion Nights"
+        },
+        {
+          "doc_id": "DEMO-APPELLATION-RULES",
+          "section": "1.3",
+          "title": "Collective Resource Sharing & Priority Parcels"
+        }
+      ]
+    }
+  ]
+}
